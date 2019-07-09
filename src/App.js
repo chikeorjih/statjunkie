@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from './pages/Home';
+import Team from './pages/Team';
+import {useRoutes} from 'hookrouter';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-     Home
-    </div>
-  );
+const routes = {
+  '/': () => <Home />,
+  '/team': () => <Team />,
+};
+
+const App = () => {
+  return useRoutes(routes);
 }
 
 export default App;
