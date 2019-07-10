@@ -1,0 +1,81 @@
+import React, { Component } from 'react';
+
+const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
+
+class TeamView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeTeam: this.props.teamId,
+      season: '20182019',
+      players: [],
+      data: null,
+      isLoading: false,
+      error: null
+    };
+  }
+
+  componentDidMount() {
+    this.setState({isLoading: true});
+
+    const TEAM_SUMMARY = `${this.state.activeTeam}?hydrate=franchise(roster(season=${this.state.season},person(name,stats(splits=[yearByYear]))))`;
+
+    fetch(API + TEAM_SUMMARY)
+      .then(response => {
+        if (response.ok){
+          return response.json()
+        }else{
+          throw new Error('He\'s dead Jim');
+        }
+      })
+      .then(data => this.setState({ 
+          data, players: 
+          this.getPlayerDetails(data), 
+        isLoading: false }))
+      .catch(error => this.setState({error, isLoading: false}));
+  }
+
+  render() {
+    const data = this.state;
+    console.log(data);
+      return (
+          <div className="team">
+          Team
+          </div>
+      );
+  }
+
+  getPlayerDetails(data) {
+    let players = [];
+    const rawPlayers = data.teams[0].franchise.roster.roster;
+
+    players = rawPlayers.map(player => {
+        return (
+            {
+                name: player.person.fullName,
+                details: player.person,
+                currentStats:  this.getCurrentPlayerStats(player.person)
+            }
+        );
+    });
+
+    return players;
+  }
+
+  getCurrentPlayerStats(person) {
+
+    const stats = person.stats[0].splits.filter((year) => {
+        return (
+            year.season === this.state.season && 
+            year.team.id === parseInt(this.state.activeTeam) && 
+            year.league.id === 133 //133 = NHL
+        );
+    });
+
+    return stats[0].stat;
+  }
+
+}
+
+export default TeamView;

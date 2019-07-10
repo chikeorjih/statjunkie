@@ -1,0 +1,18 @@
+https://api.nhle.com/stats/rest/skaters?isAggregate=false&reportType=basic&isGame=false&reportName=skatersummary&cayenneExp=leagueId=133%20and%20gameTypeId=%222%22%20and%20seasonId%3E=20182019%20and%20seasonId%3C=20182019%20and%20teamId=19
+
+* Games Played
+* Goals
+* Assists
+* Points
+* Plus/Minus
+* Shots on Goal
+* Shooting Percentage
+* Time on Ice
+
+* Projected Goals (82 Games)
+* Projected Assists (82 Games)
+* Projected Points (82 Games)
+* Goals against Average
+* Assists against Average
+* Points against Average
+* Value (Points agains Salary)
