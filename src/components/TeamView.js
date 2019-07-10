@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 
@@ -37,13 +39,42 @@ class TeamView extends Component {
   }
 
   render() {
-    const data = this.state;
-    console.log(data);
-      return (
-          <div className="team">
-          Team
-          </div>
-      );
+    const players = this.getSummary(this.state.players);
+
+    const columns = [{
+        dataField: 'picture',
+        text: ''
+    }, {
+        dataField: 'name',
+        text: 'Player',
+        sort: true
+    }, {
+        dataField: 'gp',
+        text: 'Games',
+        sort: true
+    }, {
+        dataField: 'goals',
+        text: 'Goals',
+        sort: true
+    }, {
+        dataField: 'assists',
+        text: 'Assists',
+        sort: true
+    }, {
+        dataField: 'points',
+        text: 'Points',
+        sort: true
+    }, {
+        dataField: 'plusMinus',
+        text: 'Plus/Minus',
+        sort: true
+    }];
+
+    return (
+        <div className="team">
+            <BootstrapTable keyField='picture' data={ players } columns={ columns } />
+        </div>
+    );
   }
 
   getPlayerDetails(data) {
@@ -74,6 +105,23 @@ class TeamView extends Component {
     });
 
     return stats[0].stat;
+  }
+
+  getSummary(players) {
+    return players.map(player => {
+        return (
+            {
+                picture: player.details.id,
+                name: player.name,
+                gp: player.currentStats.games,
+                goals: player.currentStats.goals,
+                assists: player.currentStats.assists,
+                points: player.currentStats.points,
+                plusMinus: player.currentStats.plusMinus
+            }
+        );
+    });
+
   }
 
 }
