@@ -40,10 +40,16 @@ class TeamView extends Component {
 
   render() {
     const players = this.getSummary(this.state.players);
+    const avatarFormater = (cell,row) => {
+        return (
+            <img alt="player" src={`https://nhl.bamcontent.com/images/headshots/current/60x60/${cell}.jpg`}/>
+        );
+    }
 
     const columns = [{
         dataField: 'picture',
-        text: ''
+        text: '',
+        formatter: avatarFormater
     }, {
         dataField: 'name',
         text: 'Player',
