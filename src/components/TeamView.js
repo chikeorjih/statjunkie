@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 
-
 const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 const PLAYERIMAGE = 'https://nhl.bamcontent.com/images/headshots/current/60x60/';
 
@@ -77,15 +76,15 @@ class TeamView extends Component {
         sort: true
     }, {
         dataField: 'projections.goals',
-        text: 'Proj. G',
+        text: '(P)G',
         sort: true
     }, {
         dataField: 'projections.assists',
-        text: 'Proj. A',
+        text: '(P)A',
         sort: true
     }, {
         dataField: 'projections.points',
-        text: 'Proj. Pts',
+        text: '(P)Pts',
         sort: true
     }, {
         dataField: 'averages.goals',
@@ -93,7 +92,7 @@ class TeamView extends Component {
         sort: true
     }, {
         dataField: 'careerAverages.goals',
-        text: 'G/GP(Career)',
+        text: 'G/GP (C)',
         sort: true
     }, {
         dataField: 'averages.assists',
@@ -101,7 +100,7 @@ class TeamView extends Component {
         sort: true
     }, {
         dataField: 'careerAverages.assists',
-        text: 'A/GP(Career)',
+        text: 'A/GP (C)',
         sort: true
     }, {
         dataField: 'averages.points',
@@ -109,13 +108,15 @@ class TeamView extends Component {
         sort: true
     }, {
         dataField: 'careerAverages.points',
-        text: 'Pts/GP(Career)',
+        text: 'Pts/GP ((C)',
         sort: true
     }];
     console.log(this.state);
     return (
-        <div className="team">
-            <BootstrapTable keyField='picture' data={ players } columns={ columns } />
+        <div className="team-content">
+            <div className='roster-stats'>
+                <BootstrapTable keyField='picture' data={ players } columns={ columns } />
+            </div>
         </div>
     );
   }

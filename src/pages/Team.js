@@ -8,7 +8,7 @@ class Team extends Component {
   render() {
       return (
           <div className="team">
-           <TeamView teamId={DEFAULT_TEAM} />
+            <TeamView teamId={DEFAULT_TEAM} />
           </div>
       );
   }
