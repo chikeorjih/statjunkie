@@ -27,16 +27,16 @@ td {
 
 .roster-stats {
     max-width: 50rem;
-    flex: 0 1 auto
-}
+    flex: 0 1 auto;
 
-.roster-stats img{
+    & img{
         width: 3rem;
         border-radius: 50%;
     }
+}
+
 
 /* Smartphones */
-
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
@@ -45,7 +45,6 @@ td {
 }
 
 /* Tablets */
-
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
