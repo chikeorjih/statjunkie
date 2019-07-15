@@ -14,11 +14,18 @@ table {
     border-collapse: collapse;
 
     & th {
-        text-align: left;
         cursor: pointer;
-        padding: .6rem .3rem;
+        padding: .6rem .1rem;
         border-bottom: 1px solid var(--color-dark-gray);
         position: relative;
+    }
+
+    & th:nth-child(2) {
+        text-align: left;
+    }
+
+    & th:focus {
+        outline: none;
     }
 
     & th.sort-asc,  & th.sort-desc {
@@ -28,7 +35,8 @@ table {
     
     & td {
         border-bottom: 1px solid var(--color-light-gray);
-        padding: .1rem .3rem;
+        padding: .1rem .1rem;
+        text-align: center;
     }
 
     & td:nth-child(2) {
@@ -36,6 +44,7 @@ table {
         color: var(--color-black);
         min-width: 7rem;
         padding: 1rem .2rem;
+        text-align: left;
     } 
     
 }
@@ -86,6 +95,10 @@ table {
             left: 0;
             z-index: 2;
         }
+
+        & th:nth-child(2), & td:nth-child(2) {
+            //border-right: 1px solid var(--color-black);
+        }
     }
 }
 
@@ -94,5 +107,5 @@ table {
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-
+ 
 }

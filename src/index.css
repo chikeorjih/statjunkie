@@ -22,24 +22,31 @@ table {
     
 }
 table th {
-        text-align: left;
         cursor: pointer;
-        padding: .6rem .3rem;
+        padding: .6rem .1rem;
         border-bottom: 1px solid var(--color-dark-gray);
         position: relative;
+    }
+table th:nth-child(2) {
+        text-align: left;
+    }
+table th:focus {
+        outline: none;
     }
 table th.sort-asc,  table th.sort-desc {
         border-bottom: 4px solid var(--color-dark-gray);
     }
 table td {
         border-bottom: 1px solid var(--color-light-gray);
-        padding: .1rem .3rem;
+        padding: .1rem .1rem;
+        text-align: center;
     }
 table td:nth-child(2) {
         font-weight: 600;
         color: var(--color-black);
         min-width: 7rem;
         padding: 1rem .2rem;
+        text-align: left;
     }
 .team-content {
     width: 100%;
@@ -81,11 +88,15 @@ table td:nth-child(2) {
             left: 0;
             z-index: 2;
         }
+
+        table th:nth-child(2), table td:nth-child(2) {
+            //border-right: 1px solid var(--color-black);
+        }
 }
 /* Tablets */
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-
+ 
 }
