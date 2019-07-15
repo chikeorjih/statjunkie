@@ -64,10 +64,29 @@ table {
 
 /* Smartphones */
 @media only screen 
-  and (min-device-width: 320px) 
+  and (min-device-width: 0px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-
+    .roster-stats{
+        position: relative;
+        width:100%;
+        z-index: 1;
+        margin: auto;
+        overflow: auto;
+    }
+    
+    table {
+        & th:nth-child(1),
+        & th:nth-child(2),
+        & td:nth-child(1),
+        & td:nth-child(2)
+        {
+            background: var(--color-white);
+            position: sticky;
+            left: 0;
+            z-index: 2;
+        }
+    }
 }
 
 /* Tablets */
