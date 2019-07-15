@@ -1,51 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,500,600&display=swap');
+html, body {
+    --color-black: #000000;
+    --color-dark-gray: #545454;
+    --color-light-gray: #cccccc;
+    --color-subtle-gray: #e7e7e7;
+}
 html, body {
     margin: 0;
     padding: 0;
     font-size: 16px;
     box-sizing: content-box;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 400;
+    color: var(--color-dark-gray);
 }
-
 table {
     width: 100%;
     font-size: .9rem;
+    border-collapse: collapse 
+    
 }
-
-th {
-    text-align: left;
-    padding: .5rem;
-}
-
-td {
-    padding: .5rem;
-}
-
+table th {
+        text-align: left;
+        cursor: pointer;
+        padding: .6rem .3rem;
+        border-bottom: 1px solid var(--color-dark-gray);
+        position: relative;
+    }
+table th.sort-asc,  table th.sort-desc {
+        border-bottom: 4px solid var(--color-dark-gray);
+    }
+table td {
+        border-bottom: 1px solid var(--color-light-gray);
+        padding: .1rem .3rem;
+    }
+table td:nth-child(2) {
+        font-weight: 600;
+        color: var(--color-black);
+        min-width: 7rem;
+        padding: 1rem .2rem;
+    }
 .team {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
 .roster-stats {
     max-width: 50rem;
     flex: 0 1 auto
 }
-
 .roster-stats img{
-        width: 3rem;
+        width: 2.5rem;
         border-radius: 50%;
     }
-
 /* Smartphones */
-
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
-
 /* Tablets */
-
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 

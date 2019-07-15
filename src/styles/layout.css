@@ -3,20 +3,41 @@ html, body {
     padding: 0;
     font-size: 16px;
     box-sizing: content-box;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 400;
+    color: var(--color-dark-gray);
 }
 
 table {
     width: 100%;
     font-size: .9rem;
-}
+    border-collapse: collapse;
 
-th {
-    text-align: left;
-    padding: .5rem;
-}
+    & th {
+        text-align: left;
+        cursor: pointer;
+        padding: .6rem .3rem;
+        border-bottom: 1px solid var(--color-dark-gray);
+        position: relative;
+    }
 
-td {
-    padding: .5rem;
+    & th.sort-asc,  & th.sort-desc {
+        border-bottom: 4px solid var(--color-dark-gray);
+    }
+
+    
+    & td {
+        border-bottom: 1px solid var(--color-light-gray);
+        padding: .1rem .3rem;
+    }
+
+    & td:nth-child(2) {
+        font-weight: 600;
+        color: var(--color-black);
+        min-width: 7rem;
+        padding: 1rem .2rem;
+    } 
+    
 }
 
 .team {
@@ -30,7 +51,7 @@ td {
     flex: 0 1 auto;
 
     & img{
-        width: 3rem;
+        width: 2.5rem;
         border-radius: 50%;
     }
 }

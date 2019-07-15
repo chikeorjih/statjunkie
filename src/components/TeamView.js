@@ -44,78 +44,40 @@ class TeamView extends Component {
         return (
             <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
         );
-    }
-
-    const columns = [{
-        dataField: 'picture',
-        text: '',
-        formatter: avatarFormater
-    }, {
-        dataField: 'name',
-        text: 'Player',
-        sort: true
-    }, {
-        dataField: 'gp',
-        text: 'GP',
-        sort: true
-    }, {
-        dataField: 'goals',
-        text: 'G',
-        sort: true
-    }, {
-        dataField: 'assists',
-        text: 'A',
-        sort: true
-    }, {
+    };
+    const defaultSorted = [{
         dataField: 'points',
-        text: 'Pts',
-        sort: true
-    }, {
-        dataField: 'plusMinus',
-        text: '+/-',
-        sort: true
-    }, {
-        dataField: 'projections.goals',
-        text: '(P)G',
-        sort: true
-    }, {
-        dataField: 'projections.assists',
-        text: '(P)A',
-        sort: true
-    }, {
-        dataField: 'projections.points',
-        text: '(P)Pts',
-        sort: true
-    }, {
-        dataField: 'averages.goals',
-        text: 'G/GP',
-        sort: true
-    }, {
-        dataField: 'careerAverages.goals',
-        text: 'G/GP (C)',
-        sort: true
-    }, {
-        dataField: 'averages.assists',
-        text: 'A/GP',
-        sort: true
-    }, {
-        dataField: 'careerAverages.assists',
-        text: 'A/GP (C)',
-        sort: true
-    }, {
-        dataField: 'averages.points',
-        text: 'Pts/GP',
-        sort: true
-    }, {
-        dataField: 'careerAverages.points',
-        text: 'Pts/GP ((C)',
-        sort: true
-    }];
+        order: 'desc'
+      }];
+      const headerSortingClasses = (column, sortOrder, isLastSorting, colIndex) => (
+        sortOrder === 'asc' ? 'sort-asc' : 'sort-desc'
+      );
+      
+
+    const columns = [
+        { dataField: 'picture', text: '', formatter: avatarFormater }, 
+        { dataField: 'name', text: 'Player', sort: true, headerSortingClasses },
+        { dataField: 'position', text: 'Pos', sort: true, headerSortingClasses },
+        { dataField: 'gp', text: 'GP', sort: true, headerSortingClasses },
+        { dataField: 'goals', text: 'G', sort: true, headerSortingClasses },
+        { dataField: 'assists', text: 'A', sort: true, headerSortingClasses },
+        { dataField: 'points', text: 'Pts', sort: true, headerSortingClasses },
+        { dataField: 'plusMinus', text: '+/-', sort: true, headerSortingClasses },
+        { dataField: 'projections.goals', text: 'Pj.G', sort: true, headerSortingClasses },
+        { dataField: 'projections.assists', text: 'Pj.A', sort: true, headerSortingClasses },
+        { dataField: 'projections.points', text: 'Pj.Pts', sort: true, headerSortingClasses },
+        { dataField: 'averages.goals', text: 'G/G.', sort: true, headerSortingClasses },
+        { dataField: 'careerAverages.goals', text: 'Career', sort: true, headerSortingClasses },
+        { dataField: 'averages.assists', text: 'A/G.', sort: true, headerSortingClasses },
+        { dataField: 'careerAverages.assists', text: 'Career', sort: true, headerSortingClasses },
+        { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
+        { dataField: 'careerAverages.points', text: 'Career',sort: true, headerSortingClasses }
+    ];
     console.log(this.state);
     return (
         <div className="team-content">
             <div className='roster-stats'>
-                <BootstrapTable keyField='picture' data={ players } columns={ columns } />
+                <BootstrapTable keyField='picture' data={ players } columns={ columns } defaultSorted={ defaultSorted }/>
             </div>
         </div>
     );
@@ -185,6 +147,7 @@ class TeamView extends Component {
             {
                 picture: player.details.id,
                 name: player.name,
+                position: player.details.primaryPosition.code,
                 gp: player.currentStats.games,
                 goals: player.currentStats.goals,
                 assists: player.currentStats.assists,
