@@ -42,6 +42,8 @@ table td:nth-child(2) {
     }
 .team-content {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .react-bootstrap-table {
     width: 100%;

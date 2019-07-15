@@ -42,6 +42,8 @@ table {
 
 .team-content {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .react-bootstrap-table {
