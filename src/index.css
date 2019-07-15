@@ -40,13 +40,15 @@ table td:nth-child(2) {
         min-width: 7rem;
         padding: 1rem .2rem;
     }
-.team {
+.team-content {
     width: 100%;
-    display: flex;
-    justify-content: center;
+}
+.react-bootstrap-table {
+    width: 100%;
 }
 .roster-stats {
-    max-width: 50rem;
+    width: 100%;
+    max-width: 60rem;
     flex: 0 1 auto
 }
 .roster-stats img{
