@@ -5,6 +5,14 @@ html, body {
     --color-light-gray: #cccccc;
     --color-subtle-gray: #e7e7e7;
     --color-white: #ffffff;
+
+    --color-light-green: #BBE9B0;
+    --color-light-red: #E9B5B0;
+    --color-green: #28d200;
+    --color-red: #ff5100;
+
+    --color-blue: #008ed4;
+
 }
 html, body {
     margin: 0;
@@ -18,7 +26,7 @@ html, body {
 table {
     width: 100%;
     font-size: .9rem;
-    border-collapse: collapse 
+    border-collapse: collapse
     
 }
 table th {
@@ -26,9 +34,6 @@ table th {
         padding: .6rem .1rem;
         border-bottom: 1px solid var(--color-dark-gray);
         position: relative;
-    }
-table th:nth-child(2) {
-        text-align: left;
     }
 table th:focus {
         outline: none;
@@ -40,13 +45,34 @@ table td {
         border-bottom: 1px solid var(--color-light-gray);
         padding: .1rem .1rem;
         text-align: center;
+        min-width: 2rem;
+    }
+table td span.good,  table td span.poor {
+        display: inline-block;
+        margin-left:.4rem;
+        width: .6rem;
+        height: .6rem;
+        border-radius: 50%;
+    }
+table td span.good {
+        background: var(--color-green);
+    }
+table td span.poor {
+        background: var(--color-red);
+    }
+table th:nth-child(2) {
+        text-align: left;
     }
 table td:nth-child(2) {
         font-weight: 600;
-        color: var(--color-black);
         min-width: 7rem;
         padding: 1rem .2rem;
         text-align: left;
+        color: var(--color-blue);
+    }
+table td:nth-child(8),
+    table td:nth-child(11) {
+        border-right: 1px solid var(--color-subtle-gray);
     }
 .team-content {
     width: 100%;
@@ -77,6 +103,11 @@ table td:nth-child(2) {
         margin: auto;
         overflow: auto;
     }
+        table th, table td {
+            padding: .5rem 1rem;
+            min-width: 1.5rem;
+        }
+
         table th:nth-child(1),
         table th:nth-child(2),
         table td:nth-child(1),

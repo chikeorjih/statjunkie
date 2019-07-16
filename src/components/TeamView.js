@@ -45,6 +45,12 @@ class TeamView extends Component {
             <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
         );
     };
+    const performanceFormater = (cell,row) => {
+        const style = (row.averages.points >= row.careerAverages.points) ? 'good' : 'poor';
+        return (
+            <span>{cell}<span className={style}></span></span>
+        );
+    };
     const defaultSorted = [{
         dataField: 'points',
         order: 'desc'
@@ -70,7 +76,7 @@ class TeamView extends Component {
         { dataField: 'careerAverages.goals', text: 'Career', sort: true, headerSortingClasses },
         { dataField: 'averages.assists', text: 'A/G.', sort: true, headerSortingClasses },
         { dataField: 'careerAverages.assists', text: 'Career', sort: true, headerSortingClasses },
-        { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
+        { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses, formatter: performanceFormater },
         { dataField: 'careerAverages.points', text: 'Career',sort: true, headerSortingClasses }
     ];
     console.log(this.state);
