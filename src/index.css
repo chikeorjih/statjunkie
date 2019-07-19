@@ -6,8 +6,8 @@ html, body {
     --color-subtle-gray: #e7e7e7;
     --color-white: #ffffff;
 
-    --color-light-green: #BBE9B0;
-    --color-light-red: #E9B5B0;
+    --color-light-green: #def5d9;
+    --color-light-red: #f5ceca;
     --color-green: #28d200;
     --color-red: #ff5100;
 
@@ -49,22 +49,21 @@ table td {
     }
 table td span.good,  table td span.poor {
         display: inline-block;
-        margin-left:.4rem;
-        width: .6rem;
-        height: .6rem;
-        border-radius: 50%;
+        min-width: 1.5rem;
+        padding: .4rem;
+        margin: -.4rem;
     }
 table td span.good {
-        background: var(--color-green);
+        background: var(--color-light-green);
     }
 table td span.poor {
-        background: var(--color-red);
+        background: var(--color-light-red);
     }
 table th:nth-child(2) {
         text-align: left;
     }
 table td:nth-child(2) {
-        font-weight: 600;
+        font-weight: 400;
         min-width: 7rem;
         padding: 1rem .2rem;
         text-align: left;
@@ -88,7 +87,7 @@ table td:nth-child(8),
     flex: 0 1 auto
 }
 .roster-stats img{
-        width: 2.5rem;
+        width: 2rem;
         border-radius: 50%;
     }
 /* Smartphones */

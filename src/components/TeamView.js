@@ -45,12 +45,15 @@ class TeamView extends Component {
             <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
         );
     };
-    const performanceFormater = (cell,row) => {
-        const style = (row.averages.points >= row.careerAverages.points) ? 'good' : 'poor';
+    const performanceFormater = (avg,careerAvg,cell) => {
+        const style = (avg >= careerAvg) ? 'good' : 'poor';
         return (
-            <span>{cell}<span className={style}></span></span>
+            <span className={style}>{cell}</span>
         );
     };
+    const goalsPerformanceFormater = (cell,row) => performanceFormater(row.averages.goals,row.trailingCareerAverages.goals,cell);
+    const astsPerformanceFormater = (cell,row) => performanceFormater(row.averages.assists,row.trailingCareerAverages.assists,cell);
+    const ptsPerformanceFormater = (cell,row) => performanceFormater(row.averages.points,row.trailingCareerAverages.points,cell);
     const defaultSorted = [{
         dataField: 'points',
         order: 'desc'
@@ -65,18 +68,18 @@ class TeamView extends Component {
         { dataField: 'name', text: 'Player', sort: true, headerSortingClasses },
         { dataField: 'position', text: 'Pos', sort: true, headerSortingClasses },
         { dataField: 'gp', text: 'GP', sort: true, headerSortingClasses },
-        { dataField: 'goals', text: 'G', sort: true, headerSortingClasses },
-        { dataField: 'assists', text: 'A', sort: true, headerSortingClasses },
-        { dataField: 'points', text: 'Pts', sort: true, headerSortingClasses },
+        { dataField: 'goals', text: 'G', sort: true, headerSortingClasses, formatter: goalsPerformanceFormater },
+        { dataField: 'assists', text: 'A', sort: true, headerSortingClasses, formatter: astsPerformanceFormater },
+        { dataField: 'points', text: 'Pts', sort: true, headerSortingClasses, formatter: ptsPerformanceFormater },
         { dataField: 'plusMinus', text: '+/-', sort: true, headerSortingClasses },
         { dataField: 'projections.goals', text: 'Pj.G', sort: true, headerSortingClasses },
         { dataField: 'projections.assists', text: 'Pj.A', sort: true, headerSortingClasses },
         { dataField: 'projections.points', text: 'Pj.Pts', sort: true, headerSortingClasses },
-        { dataField: 'averages.goals', text: 'G/G.', sort: true, headerSortingClasses },
-        { dataField: 'careerAverages.goals', text: 'Career', sort: true, headerSortingClasses },
-        { dataField: 'averages.assists', text: 'A/G.', sort: true, headerSortingClasses },
-        { dataField: 'careerAverages.assists', text: 'Career', sort: true, headerSortingClasses },
-        { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses, formatter: performanceFormater },
+        // { dataField: 'averages.goals', text: 'G/G.', sort: true, headerSortingClasses },
+        // { dataField: 'careerAverages.goals', text: 'Career', sort: true, headerSortingClasses },
+        // { dataField: 'averages.assists', text: 'A/G.', sort: true, headerSortingClasses },
+        // { dataField: 'careerAverages.assists', text: 'Career', sort: true, headerSortingClasses },
+        { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
         { dataField: 'careerAverages.points', text: 'Career',sort: true, headerSortingClasses }
     ];
     console.log(this.state);
@@ -127,14 +130,23 @@ class TeamView extends Component {
         );
     });
     let totalStats = {games: 0, goals: 0, assists: 0, points: 0 };
+    let trailingStats = {games: 0, goals: 0, assists: 0, points: 0 };
 
     // TODO: fast but there is a better way to do this
-    for (var i = 0, len = stats.length; i < len; i++) {
+    for (let i = 0, len = stats.length; i < len; i++) {
         Object.assign(totalStats,{
             games: totalStats.games + stats[i].stat.games,
             goals: totalStats.goals + stats[i].stat.goals,
             assists: totalStats.assists + stats[i].stat.assists,
             points: totalStats.points + stats[i].stat.points
+        });
+    }
+    for (let x = Math.max((stats.length-1)-3,0), y = stats.length; x < y; x++) {
+        Object.assign(trailingStats,{
+            games: trailingStats.games + stats[x].stat.games,
+            goals: trailingStats.goals + stats[x].stat.goals,
+            assists: trailingStats.assists + stats[x].stat.assists,
+            points: trailingStats.points + stats[x].stat.points
         });
     }
 
@@ -144,7 +156,13 @@ class TeamView extends Component {
         points: this.getAverage(totalStats.points,totalStats.games)
     };
 
-    return {totalStats, careerAverages};
+    let trailingCareerAverages = {
+        goals: this.getAverage(trailingStats.goals,trailingStats.games), 
+        assists: this.getAverage(trailingStats.assists,trailingStats.games), 
+        points: this.getAverage(trailingStats.points,trailingStats.games)
+    };
+
+    return {totalStats, careerAverages, trailingCareerAverages};
   }
 
   getSummary(players) {
@@ -173,6 +191,11 @@ class TeamView extends Component {
                     goals: player.careerStats.careerAverages.goals,
                     assists: player.careerStats.careerAverages.assists,
                     points: player.careerStats.careerAverages.points
+                },
+                trailingCareerAverages: {
+                    goals: player.careerStats.trailingCareerAverages.goals,
+                    assists: player.careerStats.trailingCareerAverages.assists,
+                    points: player.careerStats.trailingCareerAverages.points
                 }
             }
         );
