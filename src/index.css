@@ -12,6 +12,7 @@ html, body {
     --color-red: #ff5100;
 
     --color-blue: #008ed4;
+    --color-gray-blue: #283242;
 
 }
 html, body {
@@ -73,18 +74,50 @@ table td:nth-child(8),
     table td:nth-child(11) {
         border-right: 1px solid var(--color-subtle-gray);
     }
-.team-content {
+.team-content, .team-info {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+.team-info {
+    background: var(--color-gray-blue);
+}
+.team-details {
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 58rem;
+    min-height: 8rem;
+    margin: 1rem 2rem;
+    padding: 1rem
+}
+.team-details img {
+        width: 5rem;
+    }
+.team-details .team-name {
+        color: var(--color-white);
+        font-size: 2rem;
+        font-weight: 300;
+        display: flex;
+        align-items: center
+    }
+.team-details .team-name span {
+            display: block;
+            line-height: 2.5rem;
+        }
+.team-details .team-name span:nth-child(2) {
+            font-weight: 500;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
 .react-bootstrap-table {
     width: 100%;
 }
 .roster-stats {
     width: 100%;
     max-width: 60rem;
-    flex: 0 1 auto
+    flex: 0 1 auto;
+    margin: 0 2rem
 }
 .roster-stats img{
         width: 2rem;

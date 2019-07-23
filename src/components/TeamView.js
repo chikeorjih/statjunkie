@@ -82,7 +82,7 @@ class TeamView extends Component {
         { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
         { dataField: 'careerAverages.points', text: 'Career',sort: true, headerSortingClasses }
     ];
-    console.log(this.state);
+    //console.log(this.state);
     return (
         <div className="team-content">
             <div className='roster-stats'>

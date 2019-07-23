@@ -70,10 +70,47 @@ table {
     
 }
 
-.team-content {
+.team-content, .team-info {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.team-info {
+    background: var(--color-gray-blue);
+}
+
+.team-details {
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 58rem;
+    min-height: 8rem;
+    margin: 1rem 2rem;
+    padding: 1rem;
+
+    & img {
+        width: 5rem;
+    }
+
+    & .team-name {
+        color: var(--color-white);
+        font-size: 2rem;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+
+        & span {
+            display: block;
+            line-height: 2.5rem;
+        }
+
+        & span:nth-child(2) {
+            font-weight: 500;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+    }
 }
 
 .react-bootstrap-table {
@@ -84,6 +121,7 @@ table {
     width: 100%;
     max-width: 60rem;
     flex: 0 1 auto;
+    margin: 0 2rem;
 
     & img{
         width: 2rem;
