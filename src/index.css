@@ -56,6 +56,7 @@ table td span.good,  table td span.poor {
     }
 table td span.good {
         background: var(--color-light-green);
+        border: 1px solid var(--color-green);
     }
 table td span.poor {
         background: var(--color-light-red);
@@ -118,6 +119,41 @@ table td:nth-child(8),
             font-size: 1rem;
             margin-top: .5rem;
         }
+.team-details .rankings {
+        min-width: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: .5rem 3rem;
+    }
+.rank-chart {
+    margin-top: .5rem
+}
+.rank-chart .chart {
+        width: 100%;
+        height: .2rem;
+        background: var(--color-dark-gray);
+        border-radius: 1rem;
+        position: relative
+    }
+.rank-chart .chart .fill {
+            position: relative;
+        }
+.rank-chart .chart .rank-tag {
+            position: absolute;
+            right: -2rem;
+            top: -.4rem;
+            color: var(--color-light-gray);
+        }
+.rank-chart .label {
+        color: var(--color-white);
+        margin-bottom: .3rem;
+        font-size: .9rem;
+    }
+.fill {
+    display: block;
+    border-radius: 1rem;
+}
 .react-bootstrap-table {
     width: 100%;
 }

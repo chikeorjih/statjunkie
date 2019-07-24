@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RankChart from '../components/RankChart';
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 const TEAMLOGO = 'https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/';
@@ -10,7 +11,10 @@ class TeamDetails extends Component {
     this.state = {
         isLoading: false,
         activeTeam: this.props.teamId,
-        teamInfo: '',
+        teamInfo: {
+            stats: {},
+            ranks: { ranking: {} }
+        },
         error: null
     };
   }
@@ -37,7 +41,7 @@ class TeamDetails extends Component {
 
   render() {
     const team = this.state.teamInfo;
-    const teamStats = (team.stats !== undefined) ? team.stats : {};
+    const teamStats = team.stats;
     console.log(team);
     return (
         <div className="team-info">
@@ -49,6 +53,12 @@ class TeamDetails extends Component {
                     <div className="record">
                       {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
                     </div>
+                </div>
+                <div className="rankings">
+                    <RankChart label="Goals For" ranking={team.ranks.goalsPerGame} />
+                    <RankChart label="Goals Against" ranking={team.ranks.goalsAgainstPerGame} />
+                    <RankChart label="Powerplay" ranking={team.ranks.powerPlayPercentage} />
+                    <RankChart label="Penalty Kill" ranking={team.ranks.penaltyKillPercentage} />
                 </div>
             </div>
         </div>
