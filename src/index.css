@@ -12,7 +12,7 @@ html, body {
     --color-red: #ff5100;
 
     --color-blue: #008ed4;
-    --color-gray-blue: #283242;
+    --color-gray-blue: #152238;
 
 }
 html, body {
@@ -93,22 +93,26 @@ table td:nth-child(8),
 }
 .team-details img {
         width: 5rem;
+        margin-top: 1rem;
     }
 .team-details .team-name {
-        color: var(--color-white);
-        font-size: 2rem;
+        color: var(--color-light-gray);
+        font-size: 1.6rem;
         font-weight: 300;
         display: flex;
-        align-items: center
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1
     }
 .team-details .team-name span {
             display: block;
-            line-height: 2.5rem;
+            line-height: 2.4rem;
         }
 .team-details .team-name span:nth-child(2) {
             font-weight: 500;
             font-size: 3rem;
             text-transform: uppercase;
+            color: var(--color-white);
         }
 .react-bootstrap-table {
     width: 100%;

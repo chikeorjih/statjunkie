@@ -91,24 +91,28 @@ table {
 
     & img {
         width: 5rem;
+        margin-top: 1rem;
     }
 
     & .team-name {
-        color: var(--color-white);
-        font-size: 2rem;
+        color: var(--color-light-gray);
+        font-size: 1.6rem;
         font-weight: 300;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
 
         & span {
             display: block;
-            line-height: 2.5rem;
+            line-height: 2.4rem;
         }
 
         & span:nth-child(2) {
             font-weight: 500;
             font-size: 3rem;
             text-transform: uppercase;
+            color: var(--color-white);
         }
     }
 }

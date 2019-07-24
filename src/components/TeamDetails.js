@@ -36,14 +36,19 @@ class TeamDetails extends Component {
   }
 
   render() {
-      console.log(this.state.teamInfo);
+    const team = this.state.teamInfo;
+      console.log(team.stats);
+    
     return (
         <div className="team-info">
             <div className="team-details">
-                <img alt="player" src={`${TEAMLOGO}${this.state.activeTeam}.svg`}/>
+                <img alt="team" src={`${TEAMLOGO}${this.state.activeTeam}.svg`}/>
                 <div className="team-name">
-                    <span>{this.state.teamInfo.city}</span>
-                    <span>{this.state.teamInfo.teamName}</span>
+                    <span>{team.city}</span>
+                    <span>{team.teamName}</span>
+                </div>
+                <div className="record">
+                  {}
                 </div>
             </div>
         </div>
