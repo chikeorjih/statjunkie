@@ -114,6 +114,11 @@ table {
             text-transform: uppercase;
             color: var(--color-white);
         }
+
+        & .record {
+            font-size: 1rem;
+            margin-top: .5rem;
+        }
     }
 }
 

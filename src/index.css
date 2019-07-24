@@ -114,6 +114,10 @@ table td:nth-child(8),
             text-transform: uppercase;
             color: var(--color-white);
         }
+.team-details .team-name .record {
+            font-size: 1rem;
+            margin-top: .5rem;
+        }
 .react-bootstrap-table {
     width: 100%;
 }

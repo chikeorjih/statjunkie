@@ -37,8 +37,8 @@ class TeamDetails extends Component {
 
   render() {
     const team = this.state.teamInfo;
-      console.log(team.stats);
-    
+    const teamStats = (team.stats !== undefined) ? team.stats : {};
+    console.log(team);
     return (
         <div className="team-info">
             <div className="team-details">
@@ -46,9 +46,9 @@ class TeamDetails extends Component {
                 <div className="team-name">
                     <span>{team.city}</span>
                     <span>{team.teamName}</span>
-                </div>
-                <div className="record">
-                  {}
+                    <div className="record">
+                      {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,7 +63,8 @@ class TeamDetails extends Component {
             venue: data.teams[0].venue.name,
             division: data.teams[0].division,
             conference: data.teams[0].conference,
-            stats: data.teams[0].teamStats
+            stats: data.teams[0].teamStats[0].splits[0].stat,
+            ranks: data.teams[0].teamStats[0].splits[1].stat,
         }
     );
   }
