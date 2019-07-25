@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import RankChart from '../components/RankChart';
+import RankChart from '../components/ranking/RankChart';
+import RankStat from '../components/ranking/RankStat';
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 const TEAMLOGO = 'https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/';
@@ -59,6 +60,10 @@ class TeamDetails extends Component {
                     <RankChart label="Goals Against" ranking={team.ranks.goalsAgainstPerGame} />
                     <RankChart label="Powerplay" ranking={team.ranks.powerPlayPercentage} />
                     <RankChart label="Penalty Kill" ranking={team.ranks.penaltyKillPercentage} />
+                </div>
+                <div className="rankings row">
+                    <RankStat label="FaceOffs" ranking={team.ranks.faceOffWinPercentage} stat={`${team.stats.faceOffWinPercentage}%`} />
+                    <RankStat label="Possession" ranking={team.ranks.evGGARatio} stat={`${team.stats.evGGARatio}`} />
                 </div>
             </div>
         </div>

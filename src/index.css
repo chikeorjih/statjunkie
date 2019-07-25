@@ -126,6 +126,10 @@ table td:nth-child(8),
         justify-content: center;
         margin: .5rem 3rem;
     }
+.team-details .rankings.row {
+        flex-direction: row;
+        justify-content: initial;
+    }
 .rank-chart {
     margin-top: .5rem
 }
@@ -148,6 +152,33 @@ table td:nth-child(8),
 .rank-chart .label {
         color: var(--color-white);
         margin-bottom: .3rem;
+        font-size: .9rem;
+    }
+.rank-stat {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    align-items: center
+}
+.rank-stat span:nth-child(1){
+        color: var(--color-white);
+        font-size: 2rem;
+        display: block;
+        text-align: center;
+        margin-bottom: .1rem;
+    }
+.rank-stat span:nth-child(2){
+        background: #7fc862;
+        border-radius:.3rem;
+        margin: .2rem;
+        padding: 0rem 0.4rem;
+        font-size: .8rem;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+    }
+.rank-stat .label {
+        color: var(--color-light-gray);
         font-size: .9rem;
     }
 .fill {
