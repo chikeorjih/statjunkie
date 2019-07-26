@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RankChart from '../components/ranking/RankChart';
 import RankStat from '../components/ranking/RankStat';
+import DropDown from '../components/DropDown';
+import TeamIds from '../helpers/teamIds';
 
 const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 const TEAMLOGO = 'https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/';
@@ -50,11 +52,13 @@ class TeamDetails extends Component {
               <div className="details">
                   <img alt="team" src={`${TEAMLOGO}${this.state.activeTeam}.svg`}/>
                   <div className="team-name">
-                      <span>{team.city}</span>
-                      <span>{team.teamName}</span>
-                      <div className="record">
-                        {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
-                      </div>
+                        <span>{team.city}</span>
+                        <span className="name">
+                            <DropDown label={team.teamName} list={TeamIds}/>
+                        </span>
+                        <div className="record">
+                            {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
+                        </div>
                   </div>
                 </div>
                 <div className="rankings">
