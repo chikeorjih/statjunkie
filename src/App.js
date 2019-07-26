@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './pages/Home';
-import Team from './pages/Team';
+import {Team} from './pages/Team';
 import {useRoutes} from 'hookrouter';
 
 const routes = {

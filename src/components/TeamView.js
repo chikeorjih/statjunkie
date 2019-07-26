@@ -9,7 +9,6 @@ class TeamView extends Component {
     super(props);
 
     this.state = {
-      activeTeam: this.props.teamId,
       season: '20182019',
       players: [],
       data: null,
@@ -21,7 +20,7 @@ class TeamView extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    const TEAM_SUMMARY = `${this.state.activeTeam}?hydrate=franchise(roster(season=${this.state.season},person(name,stats(splits=[yearByYear]))))`;
+    const TEAM_SUMMARY = `${this.props.teamId}?hydrate=franchise(roster(season=${this.state.season},person(name,stats(splits=[yearByYear]))))`;
 
     fetch(API + TEAM_SUMMARY)
       .then(response => {
@@ -115,7 +114,7 @@ class TeamView extends Component {
     const stats = person.stats[0].splits.filter((year) => {
         return (
             year.season === this.state.season && 
-            year.team.id === parseInt(this.state.activeTeam) && 
+            year.team.id === parseInt(this.props.teamId) && 
             year.league.id === 133 //133 = NHL
         );
     });
