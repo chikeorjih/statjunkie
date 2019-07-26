@@ -115,7 +115,7 @@ table td:nth-child(8),
         }
 .team-details .team-name span:nth-child(2) {
             font-weight: 500;
-            font-size: 3rem;
+            font-size: 2.6rem;
             text-transform: uppercase;
             color: var(--color-white);
         }
@@ -128,7 +128,7 @@ table td:nth-child(8),
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: .5rem 3rem;
+        margin: .5rem 2rem;
     }
 .team-details .rankings.row {
         flex-direction: row;
