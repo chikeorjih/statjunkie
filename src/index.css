@@ -90,8 +90,12 @@ table td:nth-child(8),
     max-width: 58rem;
     min-height: 8rem;
     margin: 1rem 2rem;
-    padding: 1rem
+    padding: 1rem;
+    justify-content: space-between
 }
+.team-details .details {
+        display: flex;
+    }
 .team-details img {
         width: 5rem;
         margin-top: 1rem;
@@ -120,7 +124,7 @@ table td:nth-child(8),
             margin-top: .5rem;
         }
 .team-details .rankings {
-        min-width: 10rem;
+        min-width: 30%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -128,7 +132,7 @@ table td:nth-child(8),
     }
 .team-details .rankings.row {
         flex-direction: row;
-        justify-content: initial;
+        align-items: center;
     }
 .rank-chart {
     margin-top: .5rem
@@ -156,19 +160,18 @@ table td:nth-child(8),
     }
 .rank-stat {
     display: flex;
-    flex: 0 1 auto;
+    flex: 0 1 50%;
     flex-direction: column;
     align-items: center
 }
 .rank-stat span:nth-child(1){
         color: var(--color-white);
-        font-size: 2rem;
+        font-size: 1.8rem;
         display: block;
         text-align: center;
-        margin-bottom: .1rem;
+        margin-bottom: .4rem;
     }
 .rank-stat span:nth-child(2){
-        background: #7fc862;
         border-radius:.3rem;
         margin: .2rem;
         padding: 0rem 0.4rem;
@@ -179,7 +182,8 @@ table td:nth-child(8),
     }
 .rank-stat .label {
         color: var(--color-light-gray);
-        font-size: .9rem;
+        font-size: .8rem;
+        margin-bottom: .3rem;
     }
 .fill {
     display: block;
@@ -229,6 +233,19 @@ table td:nth-child(8),
 
         table th:nth-child(2), table td:nth-child(2) {
             //border-right: 1px solid var(--color-black);
+        }
+
+    .team-details {
+        flex-wrap: wrap
+    }
+
+        .team-details .rankings {
+            width: 90%;
+            margin: 1rem 0;
+        }
+
+        .team-details .rankings.row {
+            width: 100%;
         }
 }
 /* Tablets */

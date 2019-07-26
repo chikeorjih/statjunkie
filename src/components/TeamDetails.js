@@ -47,13 +47,15 @@ class TeamDetails extends Component {
     return (
         <div className="team-info">
             <div className="team-details">
-                <img alt="team" src={`${TEAMLOGO}${this.state.activeTeam}.svg`}/>
-                <div className="team-name">
-                    <span>{team.city}</span>
-                    <span>{team.teamName}</span>
-                    <div className="record">
-                      {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
-                    </div>
+              <div className="details">
+                  <img alt="team" src={`${TEAMLOGO}${this.state.activeTeam}.svg`}/>
+                  <div className="team-name">
+                      <span>{team.city}</span>
+                      <span>{team.teamName}</span>
+                      <div className="record">
+                        {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
+                      </div>
+                  </div>
                 </div>
                 <div className="rankings">
                     <RankChart label="Goals For" ranking={team.ranks.goalsPerGame} />
@@ -64,6 +66,8 @@ class TeamDetails extends Component {
                 <div className="rankings row">
                     <RankStat label="FaceOffs" ranking={team.ranks.faceOffWinPercentage} stat={`${team.stats.faceOffWinPercentage}%`} />
                     <RankStat label="Possession" ranking={team.ranks.evGGARatio} stat={`${team.stats.evGGARatio}`} />
+                    <RankStat label="Shooting %" ranking={team.ranks.shootingPctRank} stat={`${team.stats.shootingPctg}%`} />
+                    <RankStat label="Save %" ranking={team.ranks.savePctRank} stat={`${team.stats.savePctg}%`} />
                 </div>
             </div>
         </div>
