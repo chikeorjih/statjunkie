@@ -1,66 +1,57 @@
 import React, { Component } from 'react';
 import TeamDetails from '../components/TeamDetails';
 import TeamView from '../components/TeamView';
+import Api from '../helpers/api';
+import Mappers from '../helpers/mappers';
 
 const TeamContext = React.createContext(null);
-const API = 'https://statsapi.web.nhl.com/api/v1/teams/';
+const TEAM_API = 'https://statsapi.web.nhl.com/api/v1/teams/';
 
 class Team extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentTeam: '19',
       isLoading: false,
-        teamInfo: {
-            stats: {},
-            ranks: { ranking: {} }
-        },
-        error: null
+      error: null,
+      currentTeam: '19',
+      currentSeason: '20182019',
+      teamData:null,
+      playerData:null,
+      players: [],
+      teamInfo: {
+          stats: {},
+          ranks: { ranking: {} }
+      }
     }
   }
 
   componentDidMount() {
-    this.fetchDetails();
+    this.fetchTeamDetails();
   }
 
   updateTeam(newTeam) {
     this.setState({currentTeam: newTeam.toString()}, ()=> {
-      this.fetchDetails();
+      this.fetchTeamDetails();
     });
   }
 
-  getTeaminfo(data) {
-    return (
-        {
-            city: data.teams[0].locationName,
-            teamName: data.teams[0].teamName,
-            venue: data.teams[0].venue.name,
-            division: data.teams[0].division,
-            conference: data.teams[0].conference,
-            stats: data.teams[0].teamStats[0].splits[0].stat,
-            ranks: data.teams[0].teamStats[0].splits[1].stat,
-        }
-    );
-  }
-
-  fetchDetails() {
+  fetchTeamDetails() {
+    const TEAM_INFO = `${this.state.currentTeam}?expand=team.stats`;
+    const TEAM_SUMMARY = `${this.state.currentTeam}?hydrate=franchise(roster(season=${this.state.currentSeason},person(name,stats(splits=[yearByYear]))))`;
+    
     this.setState({isLoading: true});
 
-    const TEAM_INFO = `${this.state.currentTeam}?expand=team.stats`;
-
-    fetch(API + TEAM_INFO)
-      .then(response => {
-        if (response.ok){
-          return response.json()
-        }else{
-          throw new Error('He\'s dead Jim');
-        }
-      })
-      .then(data => this.setState({ 
-        data, 
-        teamInfo: this.getTeaminfo(data), 
-        isLoading: false }))
+    Api.callApi(TEAM_API,TEAM_INFO)
+      .then(data => this.setState({ teamData: data, teamInfo: Mappers.getTeaminfo(data)}))
+      .then(
+        Api.callApi(TEAM_API,TEAM_SUMMARY)
+        .then(data => this.setState({ 
+          playerData: data, 
+          players: Mappers.getPlayerDetails(data, {currentTeam: this.state.currentTeam, currentSeason: this.state.currentSeason}),
+          isLoading: false }))
+        .catch(error => this.setState({error, isLoading: false}))
+      )
       .catch(error => this.setState({error, isLoading: false}));
   }
 
@@ -76,4 +67,4 @@ class Team extends Component {
   }
 }
 
-export { Team, TeamContext};
+export {Team, TeamContext};
