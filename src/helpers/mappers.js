@@ -76,7 +76,6 @@ function getCurrentPlayerStats(person, details) {
             year.league.id === 133 //133 = NHL
         );
     });
-
     return stats[0].stat;
 }
 

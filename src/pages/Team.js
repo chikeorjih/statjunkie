@@ -43,16 +43,15 @@ class Team extends Component {
     this.setState({isLoading: true});
 
     Api.callApi(TEAM_API,TEAM_INFO)
-      .then(data => this.setState({ teamData: data, teamInfo: Mappers.getTeaminfo(data)}))
-      .then(
-        Api.callApi(TEAM_API,TEAM_SUMMARY)
-        .then(data => this.setState({ 
-          playerData: data, 
-          players: Mappers.getPlayerDetails(data, {currentTeam: this.state.currentTeam, currentSeason: this.state.currentSeason}),
-          isLoading: false }))
-        .catch(error => this.setState({error, isLoading: false}))
-      )
+      .then(data => this.setState({ teamData: data, teamInfo: Mappers.getTeaminfo(data), isLoading: false}))
       .catch(error => this.setState({error, isLoading: false}));
+
+    Api.callApi(TEAM_API,TEAM_SUMMARY)
+      .then(data => this.setState({ 
+        playerData: data, 
+        players: Mappers.getPlayerDetails(data, {currentTeam: this.state.currentTeam, currentSeason: this.state.currentSeason}),
+        isLoading: false }))
+      .catch(error => this.setState({error, isLoading: false}))
   }
 
   render() {
