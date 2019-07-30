@@ -69,6 +69,7 @@ const mappers = {
 }
 
 function getCurrentPlayerStats(person, details) {
+    const currentStatsDefault = {games: 0, goals: 0, assists: 0, points: 0, plusMinus: 0,};
     const stats = person.stats[0].splits.filter((year) => {
         return (
             year.season === details.currentSeason && 
@@ -76,7 +77,8 @@ function getCurrentPlayerStats(person, details) {
             year.league.id === 133 //133 = NHL
         );
     });
-    return stats[0].stat;
+
+    return (stats[0] !== undefined) ? stats[0].stat : currentStatsDefault;
 }
 
 function getCareerAverages(person) {
@@ -122,13 +124,16 @@ function getCareerAverages(person) {
 }
 
 function getAverage(stat,games) {
-    return Math.round((stat/games)*100)/100;
+    //this check handles a werid case where they track players that didnt play in a regular season game
+    const Avg = (stat !== 0 && games !== 0) ? Math.round((stat/games)*100)/100 : 0;
+    return Avg;
 }
 
 function getProjection(stat,games) {
-    stat = (stat === undefined) ? 0 : stat;
+    stat = (stat !== undefined) ? stat : 0;
 
-    return Math.round((stat/games) * 82);
+    //this check handles a werid case where they track players that didnt play in a regular season game
+    return (stat !== 0 && games !== 0) ? Math.round((stat/games) * 82) : 0;
 }
 
 export default mappers;

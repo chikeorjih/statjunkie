@@ -14,7 +14,7 @@ class Team extends Component {
     this.state = {
       isLoading: false,
       error: null,
-      currentTeam: '19',
+      currentTeam: '21',
       currentSeason: '20182019',
       teamData:null,
       playerData:null,
@@ -55,6 +55,7 @@ class Team extends Component {
   }
 
   render() {
+    console.log(this.state);
       return (
         <TeamContext.Provider value={{state: this.state, updateTeam: this.updateTeam.bind(this)}}>
           <div className="team">
