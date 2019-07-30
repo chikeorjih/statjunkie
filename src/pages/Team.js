@@ -3,6 +3,7 @@ import TeamDetails from '../components/TeamDetails';
 import TeamView from '../components/TeamView';
 import Api from '../helpers/api';
 import Mappers from '../helpers/mappers';
+import {navigate} from 'hookrouter';
 
 const TeamContext = React.createContext(null);
 const TEAM_API = 'https://statsapi.web.nhl.com/api/v1/teams/';
@@ -14,7 +15,7 @@ class Team extends Component {
     this.state = {
       isLoading: false,
       error: null,
-      currentTeam: '21',
+      currentTeam: (this.props.currentTeam === undefined) ? '19' : this.props.currentTeam,
       currentSeason: '20182019',
       teamData:null,
       playerData:null,
@@ -32,6 +33,7 @@ class Team extends Component {
 
   updateTeam(newTeam) {
     this.setState({currentTeam: newTeam.toString()}, ()=> {
+      navigate(`/team/${newTeam}`);
       this.fetchTeamDetails();
     });
   }
@@ -55,7 +57,6 @@ class Team extends Component {
   }
 
   render() {
-    console.log(this.state);
       return (
         <TeamContext.Provider value={{state: this.state, updateTeam: this.updateTeam.bind(this)}}>
           <div className="team">

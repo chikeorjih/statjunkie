@@ -6,6 +6,7 @@ import {useRoutes} from 'hookrouter';
 const routes = {
   '/': () => <Home />,
   '/team': () => <Team />,
+  '/team/:id': ({id}) => <Team currentTeam={id}/>,
 };
 
 const App = () => {
