@@ -12,7 +12,7 @@ const mappers = {
             }
         );
     },
-    getPlayerDetails: (data, details) => {
+    getPlayerDetails: (data, details, getGoalies) => {
         let players = [];
         const rawPlayers = data.teams[0].franchise.roster.roster;
 
@@ -27,45 +27,68 @@ const mappers = {
             );
         });
 
-        //TODO: this filters to skaters, handle goalies next
-        return players.filter(player => player.details.primaryPosition.code !== 'G');
+        if(getGoalies){
+            return players.filter(player => player.details.primaryPosition.code === 'G');
+        }else{
+            return players.filter(player => player.details.primaryPosition.code !== 'G');
+        }
+        
     },
-    getSummary: (players) => {
-        return players.map(player => {
-            return (
-                {
-                    picture: player.details.id,
-                    name: player.name,
-                    position: player.details.primaryPosition.code,
-                    gp: player.currentStats.games,
-                    goals: player.currentStats.goals,
-                    assists: player.currentStats.assists,
-                    points: player.currentStats.points,
-                    plusMinus: player.currentStats.plusMinus,
-                    projections: {
-                        goals: getProjection(player.currentStats.goals,player.currentStats.games),
-                        assists: getProjection(player.currentStats.assists,player.currentStats.games),
-                        points: getProjection(player.currentStats.points,player.currentStats.games)
-                    },
-                    averages: {
-                        goals: getAverage(player.currentStats.goals,player.currentStats.games),
-                        assists: getAverage(player.currentStats.assists,player.currentStats.games),
-                        points: getAverage(player.currentStats.points,player.currentStats.games)
-                    },
-                    careerAverages: {
-                        goals: player.careerStats.careerAverages.goals,
-                        assists: player.careerStats.careerAverages.assists,
-                        points: player.careerStats.careerAverages.points
-                    },
-                    trailingCareerAverages: {
-                        goals: player.careerStats.trailingCareerAverages.goals,
-                        assists: player.careerStats.trailingCareerAverages.assists,
-                        points: player.careerStats.trailingCareerAverages.points
-                    }
-                }
-            );
-        });
+    getSummary: (players, isGoalies) => {
+        return (isGoalies) ? getGoalies(players) : getSkaters(players);
     }
+}
+
+function getSkaters(players) {
+    return players.map(player => {
+        return (
+            {
+                picture: player.details.id,
+                name: player.name,
+                position: player.details.primaryPosition.code,
+                gp: player.currentStats.games,
+                goals: player.currentStats.goals,
+                assists: player.currentStats.assists,
+                points: player.currentStats.points,
+                plusMinus: player.currentStats.plusMinus,
+                projections: {
+                    goals: getProjection(player.currentStats.goals,player.currentStats.games),
+                    assists: getProjection(player.currentStats.assists,player.currentStats.games),
+                    points: getProjection(player.currentStats.points,player.currentStats.games)
+                },
+                averages: {
+                    goals: getAverage(player.currentStats.goals,player.currentStats.games),
+                    assists: getAverage(player.currentStats.assists,player.currentStats.games),
+                    points: getAverage(player.currentStats.points,player.currentStats.games)
+                },
+                careerAverages: {
+                    goals: player.careerStats.careerAverages.goals,
+                    assists: player.careerStats.careerAverages.assists,
+                    points: player.careerStats.careerAverages.points
+                },
+                trailingCareerAverages: {
+                    goals: player.careerStats.trailingCareerAverages.goals,
+                    assists: player.careerStats.trailingCareerAverages.assists,
+                    points: player.careerStats.trailingCareerAverages.points
+                }
+            }
+        );
+    });
+}
+
+function getGoalies(players) {
+    console.log(players);
+    return players.map(player => {
+        return (
+            {
+                picture: player.details.id,
+                name: player.name,
+                position: player.details.primaryPosition.code,
+                gp: player.currentStats.games,
+                gaa: player.currentStats.goalAgainstAverage
+            }
+        );
+    });
 }
 
 function getCurrentPlayerStats(person, details) {

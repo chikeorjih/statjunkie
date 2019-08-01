@@ -5,13 +5,13 @@ import Mappers from '../helpers/mappers';
 
 const PLAYERIMAGE = 'https://nhl.bamcontent.com/images/headshots/current/60x60/';
 
-class TeamView extends Component {
+class SkaterView extends Component {
 
   render() {
     return (
       <TeamContext.Consumer>
         {(context) => {
-          const players = Mappers.getSummary(context.state.players);
+          const players = Mappers.getSummary(context.state.players, false);
           const avatarFormater = (cell,row) => {
               return (
                   <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
@@ -64,4 +64,4 @@ class TeamView extends Component {
   }
 }
 
-export default TeamView;
+export default SkaterView;
