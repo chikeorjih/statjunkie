@@ -31,7 +31,13 @@ class GoalieView extends Component {
               { dataField: 'name', text: 'Player', sort: true, headerSortingClasses },
               { dataField: 'position', text: 'Pos', sort: true, headerSortingClasses },
               { dataField: 'gp', text: 'GP', sort: true, headerSortingClasses },
-              { dataField: 'gaa', text: 'GAA', sort: true, headerSortingClasses }
+              { dataField: 'w', text: 'W', sort: true, headerSortingClasses },
+              { dataField: 'l', text: 'W', sort: true, headerSortingClasses },
+              { dataField: 'so', text: 'SO', sort: true, headerSortingClasses },
+              { dataField: 'gaa', text: 'GAA', sort: true, headerSortingClasses },
+              { dataField: 'svP', text: 'SV%', sort: true, headerSortingClasses },
+              { dataField: 'sa', text: 'SA', sort: true, headerSortingClasses },
+              { dataField: 'ppSv', text: 'PPSV%', sort: true, headerSortingClasses }
           ];
           
           return (

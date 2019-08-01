@@ -85,7 +85,13 @@ function getGoalies(players) {
                 name: player.name,
                 position: player.details.primaryPosition.code,
                 gp: player.currentStats.games,
-                gaa: player.currentStats.goalAgainstAverage
+                w: player.currentStats.wins,
+                l: player.currentStats.losses,
+                so: player.currentStats.shutouts,
+                gaa: player.currentStats.goalAgainstAverage,
+                svP:  player.currentStats.savePercentage,
+                sa: player.currentStats.shotsAgainst,
+                ppSv: Math.round((player.currentStats.powerPlaySavePercentage)*100)/10,
             }
         );
     });
