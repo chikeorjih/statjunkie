@@ -22,7 +22,7 @@ const mappers = {
                     name: player.person.fullName,
                     details: player.person,
                     currentStats:  getCurrentPlayerStats(player.person, details),
-                    careerStats: getCareerAverages(player.person)
+                    careerStats: (player.position.code === 'G') ? getGoalieCareerAverages(player.person) : getCareerAverages(player.person)
                 }
             );
         });
@@ -77,7 +77,6 @@ function getSkaters(players) {
 }
 
 function getGoalies(players) {
-    console.log(players);
     return players.map(player => {
         return (
             {
@@ -91,7 +90,11 @@ function getGoalies(players) {
                 gaa: player.currentStats.goalAgainstAverage,
                 svP:  player.currentStats.savePercentage,
                 sa: player.currentStats.shotsAgainst,
-                ppSv: Math.round((player.currentStats.powerPlaySavePercentage)*100)/10,
+                pkSv: Math.round((player.currentStats.shortHandedSavePercentage)*10)/1000,
+                trailingCareerAverages: {
+                    saveP: player.careerStats.trailingCareerAverages.saveP,
+                    gaa: player.careerStats.trailingCareerAverages.gaa
+                }
             }
         );
     });
@@ -150,6 +153,38 @@ function getCareerAverages(person) {
     };
 
     return {totalStats, careerAverages, trailingCareerAverages};
+}
+
+function getGoalieCareerAverages(person) {
+    const stats = person.stats[0].splits.filter((year) => {
+        return (
+            year.league.id === 133 && year.stat.games > 10
+        );
+    });
+    const trailingYears = (stats.length-1 > 3) ? 4 : stats.length;
+
+    let totalStats = {games:0, saveP: 0, gaa:0};
+    let trailingStats = {games:0, saveP: 0, gaa:0};
+
+    for (let i = 0, len = stats.length; i < len; i++) {
+        Object.assign(totalStats,{
+            games: totalStats.games + stats[i].stat.games,
+            saveP: totalStats.saveP + stats[i].stat.savePercentage,
+            gaa: totalStats.gaa + stats[i].stat.goalAgainstAverage
+        });
+    }
+    for (let x = Math.max((stats.length-1)-3,0), y = stats.length; x < y; x++) {
+        Object.assign(trailingStats,{
+            games: trailingStats.games + stats[x].stat.games,
+            saveP: trailingStats.saveP + stats[x].stat.savePercentage,
+            gaa: trailingStats.gaa + stats[x].stat.goalAgainstAverage
+        });
+    }
+    let trailingCareerAverages = {
+        saveP: Math.round((trailingStats.saveP/trailingYears)*1000)/1000, 
+        gaa: Math.round((trailingStats.gaa/trailingYears)*1000)/1000
+    };
+    return {totalStats, trailingCareerAverages};
 }
 
 function getAverage(stat,games) {

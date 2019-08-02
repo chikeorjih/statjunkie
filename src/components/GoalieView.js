@@ -17,8 +17,30 @@ class GoalieView extends Component {
                   <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
               );
           };
+          const gaaPerformanceFormater = (avg,careerAvg,cell,isOver) => {
+            const buffer = .1;
+            let style = '';
+            if(avg < (careerAvg - buffer)){
+              style = 'good'
+            }else if (avg > (careerAvg + buffer)) {
+              style = 'poor'
+            }
+            return <span className={style}>{cell}</span>;
+          };
+          const svPerformanceFormater = (avg,careerAvg,cell,isOver) => {
+            const buffer = .01;
+            let style = '';
+            if(avg > (careerAvg + buffer)){
+              style = 'good'
+            }else if (avg < (careerAvg - buffer)) {
+              style = 'poor'
+            }
+            return <span className={style}>{cell}</span>;
+          };
+          const gaaFormater = (cell,row) => gaaPerformanceFormater(row.gaa,row.trailingCareerAverages.gaa,cell);
+          const svFormater = (cell,row) => svPerformanceFormater(row.svP,row.trailingCareerAverages.saveP,cell);
           const defaultSorted = [{
-              dataField: 'points',
+              dataField: 'gp',
               order: 'desc'
             }];
             const headerSortingClasses = (column, sortOrder, isLastSorting, colIndex) => (
@@ -32,12 +54,12 @@ class GoalieView extends Component {
               { dataField: 'position', text: 'Pos', sort: true, headerSortingClasses },
               { dataField: 'gp', text: 'GP', sort: true, headerSortingClasses },
               { dataField: 'w', text: 'W', sort: true, headerSortingClasses },
-              { dataField: 'l', text: 'W', sort: true, headerSortingClasses },
+              { dataField: 'l', text: 'L', sort: true, headerSortingClasses },
               { dataField: 'so', text: 'SO', sort: true, headerSortingClasses },
-              { dataField: 'gaa', text: 'GAA', sort: true, headerSortingClasses },
-              { dataField: 'svP', text: 'SV%', sort: true, headerSortingClasses },
+              { dataField: 'svP', text: 'SV%', sort: true, headerSortingClasses, formatter: svFormater },
+              { dataField: 'gaa', text: 'GAA', sort: true, headerSortingClasses, formatter: gaaFormater },
               { dataField: 'sa', text: 'SA', sort: true, headerSortingClasses },
-              { dataField: 'ppSv', text: 'PPSV%', sort: true, headerSortingClasses }
+              { dataField: 'pkSv', text: 'PKSV%', sort: true, headerSortingClasses }
           ];
           
           return (
