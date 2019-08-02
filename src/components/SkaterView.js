@@ -18,10 +18,15 @@ class SkaterView extends Component {
               );
           };
           const performanceFormater = (avg,careerAvg,cell) => {
-              const style = (avg >= careerAvg) ? 'good' : 'poor';
-              return (
-                  <span className={style}>{cell}</span>
-              );
+            const buffer = .0244; //give them a 2pt/g/a buffer
+            let style = '';
+
+            if(avg <= (careerAvg - buffer)){
+              style = 'poor'
+            }else if (avg >= (careerAvg + buffer)) {
+              style = 'good'
+            }
+            return <span className={style}>{cell}</span>
           };
           const goalsPerformanceFormater = (cell,row) => performanceFormater(row.averages.goals,row.trailingCareerAverages.goals,cell);
           const astsPerformanceFormater = (cell,row) => performanceFormater(row.averages.assists,row.trailingCareerAverages.assists,cell);
