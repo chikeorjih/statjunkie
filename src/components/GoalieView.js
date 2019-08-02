@@ -64,7 +64,7 @@ class GoalieView extends Component {
           
           return (
             <div className="team-content">
-                <div className='roster-stats'>
+                <div className='roster-stats goalie'>
                     <BootstrapTable keyField='picture' data={ players } columns={ columns } defaultSorted={ defaultSorted }/>
                 </div>
             </div>

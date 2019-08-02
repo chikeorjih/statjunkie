@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TeamDetails from '../components/TeamDetails';
 import SkaterView from '../components/SkaterView';
 import GoalieView from '../components/GoalieView';
+import Toggle from '../components/Toggle';
 import Api from '../helpers/api';
 import Mappers from '../helpers/mappers';
 import {navigate} from 'hookrouter';
@@ -26,7 +27,7 @@ class Team extends Component {
           stats: {},
           ranks: { ranking: {} }
       },
-      showGoalies: true
+      showGoalies: false
     }
   }
 
@@ -39,6 +40,10 @@ class Team extends Component {
       navigate(`/team/${newTeam}`);
       this.fetchTeamDetails();
     });
+  }
+
+  updatePlayers(showGoalies) {
+    this.setState({showGoalies: showGoalies});
   }
 
   fetchTeamDetails() {
@@ -70,11 +75,12 @@ class Team extends Component {
         <SkaterView teamId={this.state.currentTeam} />;
 
       return (
-        <TeamContext.Provider value={{state: this.state, updateTeam: this.updateTeam.bind(this)}}>
-          <div className="team">
-            <TeamDetails teamId={this.state.currentTeam} />
-            {players}
-          </div>
+        <TeamContext.Provider value={{state: this.state,updateTeam: this.updateTeam.bind(this)}}>
+            <div className="team">
+              <TeamDetails teamId={this.state.currentTeam} />
+              <Toggle updatePlayers={this.updatePlayers.bind(this)}/>
+              {players}
+            </div>
         </TeamContext.Provider>
       );
   }
