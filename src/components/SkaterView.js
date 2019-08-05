@@ -12,6 +12,7 @@ class SkaterView extends Component {
       <TeamContext.Consumer>
         {(context) => {
           const players = Mappers.getSummary(context.state.players, false);
+          console.log(players);
           const avatarFormater = (cell,row) => {
               return (
                   <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>

@@ -120,7 +120,7 @@ function getCareerAverages(person) {
         );
     });
     let totalStats = {games: 0, goals: 0, assists: 0, points: 0 };
-    let trailingStats = {games: 0, goals: 0, assists: 0, points: 0 };
+    let trailingStats = {games: 0, goals: 0, assists: 0, points: 0, actuals: []};
 
     // TODO: fast but there is a better way to do this
     for (let i = 0, len = stats.length; i < len; i++) {
@@ -131,12 +131,19 @@ function getCareerAverages(person) {
             points: totalStats.points + stats[i].stat.points
         });
     }
-    for (let x = Math.max((stats.length-1)-3,0), y = stats.length; x < y; x++) {
+    for (let x = Math.max((stats.length-4),0), y = stats.length - 1; x < y; x++) {
         Object.assign(trailingStats,{
             games: trailingStats.games + stats[x].stat.games,
             goals: trailingStats.goals + stats[x].stat.goals,
             assists: trailingStats.assists + stats[x].stat.assists,
             points: trailingStats.points + stats[x].stat.points
+        });
+
+        trailingStats.actuals.push({
+            games: stats[x].stat.games,
+            goals: stats[x].stat.goals,
+            assists: stats[x].stat.assists,
+            points: stats[x].stat.points
         });
     }
 
@@ -151,8 +158,9 @@ function getCareerAverages(person) {
         assists: getAverage(trailingStats.assists,trailingStats.games), 
         points: getAverage(trailingStats.points,trailingStats.games)
     };
+    let standardDeviation = getStandardDeviation(trailingStats,trailingCareerAverages);
 
-    return {totalStats, careerAverages, trailingCareerAverages};
+    return {totalStats, careerAverages, trailingCareerAverages,};
 }
 
 function getGoalieCareerAverages(person) {
@@ -185,6 +193,28 @@ function getGoalieCareerAverages(person) {
         gaa: Math.round((trailingStats.gaa/trailingYears)*1000)/1000
     };
     return {totalStats, trailingCareerAverages};
+}
+
+function getStandardDeviation(totals,averages){
+    const meanSquared = totals.actuals.map((year) => {
+        return ({
+            games: year.games,
+            goals: Math.pow((getAverage(year.goals,year.games) - averages.goals),2),
+            assists: Math.pow((getAverage(year.assists,year.games)  - averages.assists),2),
+            points: Math.pow((getAverage(year.points,year.games)  - averages.points),2)
+        });
+    });
+    // const standardDeviation = meanSquared.reduce((a,b) => {
+    //     return ({
+    //         games: Math.round(Math.sqrt((a.games + b.games)/meanSquared.length)*100)/100 ,
+    //         goals: Math.round(Math.sqrt((a.goals + b.goals)/meanSquared.length)*100)/100,
+    //         assists: Math.round(Math.sqrt((a.assists + b.assists)/meanSquared.length)*100)/100,
+    //         points: Math.round(Math.sqrt((a.points + b.points)/meanSquared.length)*100)/100
+    //     });
+    // });
+
+console.log(meanSquared);
+    return meanSquared;
 }
 
 function getAverage(stat,games) {
