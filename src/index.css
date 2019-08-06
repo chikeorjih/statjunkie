@@ -89,7 +89,7 @@ table td:nth-child(8),
     width: 100%;
     max-width: 58rem;
     min-height: 8rem;
-    margin: 1rem 2rem;
+    margin: 1rem 2rem 0;
     padding: 1rem;
     justify-content: space-between
 }
@@ -307,3 +307,29 @@ table td:nth-child(8),
   and (-webkit-min-device-pixel-ratio: 1) {
  
 }
+.players-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--color-gray-blue)
+}
+.players-toggle .toggle {
+        display: flex;
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 58rem;
+    }
+.players-toggle button {
+        color: var(--color-light-gray);
+        background: transparent;
+        border: 0;
+        padding:.5rem 1rem;
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        outline: none;
+    }
+.players-toggle button.active {
+        color: var(--color-white);
+        font-weight: bold;
+    }

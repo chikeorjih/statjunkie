@@ -15,9 +15,11 @@ const Toggle = (props) => {
                 };
 
                 return (
-                    <div className="toggle">
-                        <button className={styles(false)} onClick={updatePlayers.bind(this,false)}>Skaters</button>
-                        <button className={styles(true)} onClick={updatePlayers.bind(this,true)}>Goalies</button>
+                    <div className="players-toggle">
+                        <div className="toggle">
+                            <button className={styles(false)} onClick={updatePlayers.bind(this,false)}>Skaters</button>
+                            <button className={styles(true)} onClick={updatePlayers.bind(this,true)}>Goalies</button>
+                        </div>
                     </div>
                 );
             }}
