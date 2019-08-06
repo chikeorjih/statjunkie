@@ -15,15 +15,16 @@
         color: var(--color-light-gray);
         background: transparent;
         border: 0;
-        padding:.5rem 1rem;
+        padding: .4rem 1rem;
         font-family: 'Barlow Semi Condensed', sans-serif;
-        font-size: 1rem;
+        font-size: .9rem;
         cursor: pointer;
         outline: none;
     }
 
     & button.active {
-        color: var(--color-white);
-        font-weight: bold;
+        background: var(--color-white);
+        color: var(--color-black);
+        font-weight: 600;
     }
 }

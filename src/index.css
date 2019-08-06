@@ -9,9 +9,11 @@ html, body {
     --color-light-green: #def5d9;
     --color-light-red: #f5ceca;
     --color-green: #28d200;
+    --color-orange: #E0853A;
     --color-red: #ff5100;
 
     --color-blue: #008ed4;
+    --color-bright-blue: #0089ff;
     --color-gray-blue: #152238;
 
 }
@@ -40,7 +42,8 @@ table th:focus {
         outline: none;
     }
 table th.sort-asc,  table th.sort-desc {
-        border-bottom: 4px solid var(--color-dark-gray);
+        color: var(--color-bright-blue);
+        border-bottom: 4px solid var(--color-bright-blue);
     }
 table td {
         border-bottom: 1px solid var(--color-light-gray);
@@ -323,13 +326,14 @@ table td:nth-child(8),
         color: var(--color-light-gray);
         background: transparent;
         border: 0;
-        padding:.5rem 1rem;
+        padding: .4rem 1rem;
         font-family: 'Barlow Semi Condensed', sans-serif;
-        font-size: 1rem;
+        font-size: .9rem;
         cursor: pointer;
         outline: none;
     }
 .players-toggle button.active {
-        color: var(--color-white);
-        font-weight: bold;
+        background: var(--color-white);
+        color: var(--color-black);
+        font-weight: 600;
     }
