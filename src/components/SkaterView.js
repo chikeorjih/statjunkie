@@ -12,13 +12,14 @@ class SkaterView extends Component {
       <TeamContext.Consumer>
         {(context) => {
           const players = Mappers.getSummary(context.state.players, false);
-          console.log(players);
+
           const avatarFormater = (cell,row) => {
               return (
                   <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
               );
           };
-          const performanceFormater = (avg,careerAvg,cell) => {
+          const performanceFormater = (avg,careerAvg,cell,stDev) => {
+            //TODO consider sing the Standard deviation thats being passed in
             const buffer = .0244; //give them a 2pt/g/a buffer
             let style = '';
 
@@ -29,16 +30,16 @@ class SkaterView extends Component {
             }
             return <span className={style}>{cell}</span>
           };
-          const goalsPerformanceFormater = (cell,row) => performanceFormater(row.averages.goals,row.trailingCareerAverages.goals,cell);
-          const astsPerformanceFormater = (cell,row) => performanceFormater(row.averages.assists,row.trailingCareerAverages.assists,cell);
-          const ptsPerformanceFormater = (cell,row) => performanceFormater(row.averages.points,row.trailingCareerAverages.points,cell);
+          const goalsPerformanceFormater = (cell,row) => performanceFormater(row.averages.goals,row.trailingCareerAverages.goals,cell,row.standardDeviation.goals);
+          const astsPerformanceFormater = (cell,row) => performanceFormater(row.averages.assists,row.trailingCareerAverages.assists,cell,row.standardDeviation.assists);
+          const ptsPerformanceFormater = (cell,row) => performanceFormater(row.averages.points,row.trailingCareerAverages.points,cell,row.standardDeviation.points);
           const defaultSorted = [{
-              dataField: 'points',
-              order: 'desc'
-            }];
-            const headerSortingClasses = (column, sortOrder, isLastSorting, colIndex) => (
-              sortOrder === 'asc' ? 'sort-asc' : 'sort-desc'
-            );
+            dataField: 'points',
+            order: 'desc'
+          }];
+          const headerSortingClasses = (column, sortOrder, isLastSorting, colIndex) => (
+            sortOrder === 'asc' ? 'sort-asc' : 'sort-desc'
+          );
             
       
           const columns = [

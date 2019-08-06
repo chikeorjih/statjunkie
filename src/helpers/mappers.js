@@ -70,6 +70,11 @@ function getSkaters(players) {
                     goals: player.careerStats.trailingCareerAverages.goals,
                     assists: player.careerStats.trailingCareerAverages.assists,
                     points: player.careerStats.trailingCareerAverages.points
+                },
+                standardDeviation: {
+                    goals: player.careerStats.standardDeviation.goals,
+                    assists: player.careerStats.standardDeviation.assists,
+                    points: player.careerStats.standardDeviation.points
                 }
             }
         );
@@ -160,7 +165,7 @@ function getCareerAverages(person) {
     };
     let standardDeviation = getStandardDeviation(trailingStats,trailingCareerAverages);
 
-    return {totalStats, careerAverages, trailingCareerAverages,};
+    return {totalStats, careerAverages, trailingCareerAverages, standardDeviation};
 }
 
 function getGoalieCareerAverages(person) {
@@ -196,6 +201,7 @@ function getGoalieCareerAverages(person) {
 }
 
 function getStandardDeviation(totals,averages){
+    let standardDeviation = {games:0, goals:0, assists: 0, points:0};
     const meanSquared = totals.actuals.map((year) => {
         return ({
             games: year.games,
@@ -204,17 +210,15 @@ function getStandardDeviation(totals,averages){
             points: Math.pow((getAverage(year.points,year.games)  - averages.points),2)
         });
     });
-    // const standardDeviation = meanSquared.reduce((a,b) => {
-    //     return ({
-    //         games: Math.round(Math.sqrt((a.games + b.games)/meanSquared.length)*100)/100 ,
-    //         goals: Math.round(Math.sqrt((a.goals + b.goals)/meanSquared.length)*100)/100,
-    //         assists: Math.round(Math.sqrt((a.assists + b.assists)/meanSquared.length)*100)/100,
-    //         points: Math.round(Math.sqrt((a.points + b.points)/meanSquared.length)*100)/100
-    //     });
-    // });
-
-console.log(meanSquared);
-    return meanSquared;
+    for (let i = 0, len = meanSquared.length; i < len; i++) {
+        Object.assign(standardDeviation,{
+            games: Math.round(Math.sqrt((standardDeviation.games + meanSquared[i].games)/meanSquared.length)*100)/100,
+            goals: Math.round(Math.sqrt((standardDeviation.goals + meanSquared[i].goals)/meanSquared.length)*100)/100,
+            assists: Math.round(Math.sqrt((standardDeviation.assists + meanSquared[i].assists)/meanSquared.length)*100)/100,
+            points: Math.round(Math.sqrt((standardDeviation.points + meanSquared[i].points)/meanSquared.length)*100)/100
+        });
+    }
+    return standardDeviation;
 }
 
 function getAverage(stat,games) {
