@@ -4,6 +4,7 @@ import RankStat from '../components/ranking/RankStat';
 import DropDown from '../components/DropDown';
 import TeamIds from '../helpers/teamIds';
 import {TeamContext} from '../pages/Team';
+import Image from './Image';
 
 const TEAMLOGO = 'https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/';
 
@@ -20,7 +21,7 @@ class TeamDetails extends Component {
                     <div className="team-info">
                         <div className="team-details">
                         <div className="details">
-                            <img alt="team" src={`${TEAMLOGO}${this.props.teamId}.svg`}/>
+                            <Image url={TEAMLOGO} player={this.props.teamId} type='svg'/>
                             <div className="team-name">
                                     <span>{team.city}</span>
                                     <span className="name">

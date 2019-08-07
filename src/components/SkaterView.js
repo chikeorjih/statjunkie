@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import {TeamContext} from '../pages/Team';
 import Mappers from '../helpers/mappers';
+import Image from './Image';
 
 const PLAYERIMAGE = 'https://nhl.bamcontent.com/images/headshots/current/60x60/';
 
@@ -15,7 +16,7 @@ class SkaterView extends Component {
 
           const avatarFormater = (cell,row) => {
               return (
-                  <img alt="player" src={`${PLAYERIMAGE}${cell}.jpg`}/>
+                  <Image url={PLAYERIMAGE} player={cell} type='jpg'/>
               );
           };
           const performanceFormater = (avg,careerAvg,cell,stDev) => {

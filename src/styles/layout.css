@@ -72,6 +72,14 @@ table {
     
 }
 
+.image { 
+    opacity: 0; 
+    transition: opacity var(--transition-time-long) ease; 
+}
+.image.loaded { 
+    opacity: 1; 
+}
+
 .team-content, .team-info {
     width: 100%;
     display: flex;
@@ -121,7 +129,7 @@ table {
 
              & .dropdown-list {
                 background: var(--color-gray-blue);
-                min-width: 9rem;
+                min-width: 12rem;
                 height: 15rem;
                 overflow: hidden;
                 overflow-y: scroll;
@@ -228,7 +236,7 @@ table {
     & .dropdown-list {
         position: absolute;
         list-style: none;
-        padding: 1rem;
+        padding: 1rem 0;
         bottom: -19rem;
     }
 
@@ -236,6 +244,11 @@ table {
         font-size: 1rem;
         text-transform: capitalize;
         line-height: 1rem;
+        padding: .1rem 1rem;
+    }
+
+    & li:hover {
+        background: var(--color-gray-blue-light);
     }
 }
 

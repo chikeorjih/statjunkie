@@ -15,8 +15,10 @@ html, body {
     --color-blue: #008ed4;
     --color-bright-blue: #0089ff;
     --color-gray-blue: #152238;
+    --color-gray-blue-light: #304364;
 
     --transition-time: .5s;
+    --transition-time-long: 1s;
 
 }
 html, body {
@@ -80,6 +82,13 @@ table td:nth-child(8),
     table td:nth-child(11) {
         border-right: 1px solid var(--color-subtle-gray);
     }
+.image { 
+    opacity: 0; 
+    transition: opacity var(--transition-time-long) ease; 
+}
+.image.loaded { 
+    opacity: 1; 
+}
 .team-content, .team-info {
     width: 100%;
     display: flex;
@@ -125,7 +134,7 @@ table td:nth-child(8),
         }
 .team-details .team-name .name .dropdown .dropdown-list {
                 background: var(--color-gray-blue);
-                min-width: 9rem;
+                min-width: 12rem;
                 height: 15rem;
                 overflow: hidden;
                 overflow-y: scroll;
@@ -214,13 +223,17 @@ table td:nth-child(8),
 .dropdown .dropdown-list {
         position: absolute;
         list-style: none;
-        padding: 1rem;
+        padding: 1rem 0;
         bottom: -19rem;
     }
 .dropdown li {
         font-size: 1rem;
         text-transform: capitalize;
         line-height: 1rem;
+        padding: .1rem 1rem;
+    }
+.dropdown li:hover {
+        background: var(--color-gray-blue-light);
     }
 .caret.closed {
     width: 0; 

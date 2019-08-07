@@ -14,7 +14,9 @@ html, body {
     --color-blue: #008ed4;
     --color-bright-blue: #0089ff;
     --color-gray-blue: #152238;
+    --color-gray-blue-light: #304364;
 
     --transition-time: .5s;
+    --transition-time-long: 1s;
 
 }
