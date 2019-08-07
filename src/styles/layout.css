@@ -170,35 +170,6 @@ table {
     }
 }
 
-.rank-chart {
-    margin-top: .5rem;
-
-    & .chart {
-        width: 100%;
-        height: .2rem;
-        background: var(--color-dark-gray);
-        border-radius: 1rem;
-        position: relative;
-        
-        & .fill {
-            position: relative;
-        }
-
-        & .rank-tag {
-            position: absolute;
-            right: -2rem;
-            top: -.4rem;
-            color: var(--color-light-gray);
-        }
-    }
-
-    & .label {
-        color: var(--color-white);
-        margin-bottom: .3rem;
-        font-size: .9rem;
-    }
-}
-
 .rank-stat {
     display: flex;
     flex: 0 1 50%;
@@ -231,11 +202,6 @@ table {
         min-width: 3.7rem;
         text-align: center;
     }
-}
-
-.fill {
-    display: block;
-    border-radius: 1rem;
 }
 
 .react-bootstrap-table {

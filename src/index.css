@@ -16,6 +16,8 @@ html, body {
     --color-bright-blue: #0089ff;
     --color-gray-blue: #152238;
 
+    --transition-time: .5s;
+
 }
 html, body {
     margin: 0;
@@ -161,30 +163,6 @@ table td:nth-child(8),
         flex-direction: row;
         align-items: center;
     }
-.rank-chart {
-    margin-top: .5rem
-}
-.rank-chart .chart {
-        width: 100%;
-        height: .2rem;
-        background: var(--color-dark-gray);
-        border-radius: 1rem;
-        position: relative
-    }
-.rank-chart .chart .fill {
-            position: relative;
-        }
-.rank-chart .chart .rank-tag {
-            position: absolute;
-            right: -2rem;
-            top: -.4rem;
-            color: var(--color-light-gray);
-        }
-.rank-chart .label {
-        color: var(--color-white);
-        margin-bottom: .3rem;
-        font-size: .9rem;
-    }
 .rank-stat {
     display: flex;
     flex: 0 1 50%;
@@ -215,10 +193,6 @@ table td:nth-child(8),
         min-width: 3.7rem;
         text-align: center;
     }
-.fill {
-    display: block;
-    border-radius: 1rem;
-}
 .react-bootstrap-table {
     width: 100%;
 }
@@ -277,6 +251,35 @@ table td:nth-child(8),
         font-size: 2.6rem;
         line-height: 3rem;
     }
+}
+.rank-chart {
+    margin-top: .5rem
+}
+.rank-chart .chart {
+        width: 100%;
+        height: .2rem;
+        background: var(--color-dark-gray);
+        border-radius: 1rem;
+        position: relative
+    }
+.rank-chart .chart .fill {
+            position: relative;
+        }
+.rank-chart .chart .rank-tag {
+            position: absolute;
+            right: -2rem;
+            top: -.4rem;
+            color: var(--color-light-gray);
+        }
+.rank-chart .label {
+        color: var(--color-white);
+        margin-bottom: .3rem;
+        font-size: .9rem;
+    }
+.fill {
+    display: block;
+    border-radius: 1rem;
+    transition: width var(--transition-time) ease;
 }
 .players-toggle {
     width: 100%;

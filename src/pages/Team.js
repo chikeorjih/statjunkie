@@ -57,7 +57,7 @@ class Team extends Component {
     this.setState({isLoading: true});
 
     Api.callApi(TEAM_API,TEAM_INFO)
-      .then(data => this.setState({ teamData: data, teamInfo: Mappers.getTeaminfo(data), isLoading: false}))
+      .then(data => this.setState({ teamData: data, teamInfo: Mappers.getTeaminfo(data), isLoading: true}))
       .catch(error => this.setState({error, isLoading: false}));
 
     Api.callApi(TEAM_API,TEAM_SUMMARY)
@@ -74,6 +74,8 @@ class Team extends Component {
         <GoalieView teamId={this.state.currentTeam} /> : 
         <SkaterView teamId={this.state.currentTeam} />;
 
+      let teamDetailsLoaded = (this.state.isLoading);
+console.log(teamDetailsLoaded);
       return (
         <TeamContext.Provider value={{state: this.state,updateTeam: this.updateTeam.bind(this)}}>
             <div className="team">

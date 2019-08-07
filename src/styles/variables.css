@@ -15,4 +15,6 @@ html, body {
     --color-bright-blue: #0089ff;
     --color-gray-blue: #152238;
 
+    --transition-time: .5s;
+
 }
