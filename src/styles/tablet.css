@@ -1,0 +1,36 @@
+/* Tablets */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .team-info {
+        & .rankings {
+            margin: .5rem 1rem;
+            min-width: 28%;
+        }
+
+        & .rankings.row {
+            margin-left: 3rem;
+        }
+
+        & .rank-stat .label {
+            font-size: .65rem;
+        }
+
+        & .rank-stat span:nth-child(1) {
+            font-size: 1.6rem;
+        }
+
+        & .rank-stat span:nth-child(2) {
+            margin: .3rem;
+        }
+
+        & .team-name {
+            & span.label.large {
+                font-size: 2.7vw;
+                line-height: 1.5rem;
+            }
+        }
+
+    }
+}

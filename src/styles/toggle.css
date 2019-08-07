@@ -20,6 +20,7 @@
         font-size: .9rem;
         cursor: pointer;
         outline: none;
+        margin: 0;
     }
 
     & button.active {

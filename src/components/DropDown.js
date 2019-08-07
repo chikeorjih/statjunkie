@@ -19,10 +19,11 @@ const DropDown = (props) => {
 
     let caretCss = (isOpen) ? 'caret open' : 'caret closed';
     let listCss = (isOpen) ? 'dropdown-list open' : 'dropdown-list closed';
+    let labelCss =(props.label !== undefined && props.label.length < 8) ? 'label' : 'label large';
 
     return (
         <div className="dropdown" onClick={toggleDropdown}>
-            <span>{props.label}</span>
+            <span className={labelCss}>{props.label}</span>
             <span className={caretCss}></span>
             <ul className={listCss}>
                 {teamList}

@@ -98,6 +98,11 @@ table td:nth-child(8),
 }
 .team-details .details {
         display: flex;
+        max-height: 9.5rem;
+        min-width: 12rem;
+        margin-right: 1rem;
+        width: 100%;
+        justify-content: center;
     }
 .team-details img {
         width: 5rem;
@@ -123,6 +128,7 @@ table td:nth-child(8),
                 overflow: hidden;
                 overflow-y: scroll;
                 left: -1rem;
+                -webkit-overflow-scrolling: touch;
              }
 .team-details .team-name .name .dropdown li {
                 line-height: 2rem;
@@ -130,18 +136,22 @@ table td:nth-child(8),
 .team-details .team-name span {
             line-height: 2.4rem;
         }
-.team-details .team-name span:nth-child(2) {
+.team-details .team-name span.label {
             font-weight: 500;
             font-size: 2.6rem;
             text-transform: uppercase;
             color: var(--color-white);
+        }
+.team-details .team-name span.label.large {
+            font-size: 3vw;
+            line-height: 3.5vw;
         }
 .team-details .team-name .record {
             font-size: 1rem;
             margin-top: .5rem;
         }
 .team-details .rankings {
-        min-width: 30%;
+        min-width: 26%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -179,7 +189,8 @@ table td:nth-child(8),
     display: flex;
     flex: 0 1 50%;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    margin: 0 .3vw
 }
 .rank-stat span:nth-child(1){
         color: var(--color-white);
@@ -201,6 +212,8 @@ table td:nth-child(8),
         color: var(--color-light-gray);
         font-size: .8rem;
         margin-bottom: .3rem;
+        min-width: 3.7rem;
+        text-align: center;
     }
 .fill {
     display: block;
@@ -228,7 +241,7 @@ table td:nth-child(8),
         position: absolute;
         list-style: none;
         padding: 1rem;
-        top: 0;
+        bottom: -19rem;
     }
 .dropdown li {
         font-size: 1rem;
@@ -257,11 +270,47 @@ table td:nth-child(8),
 .dropdown-list.open{
     display: block;
 }
+/*constrain max font size of the team name*/
+@media only screen 
+  and (min-width: 1400px)  {
+    .team-details .team-name span.label.large {
+        font-size: 2.6rem;
+        line-height: 3rem;
+    }
+}
+.players-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--color-gray-blue)
+}
+.players-toggle .toggle {
+        display: flex;
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 58rem;
+    }
+.players-toggle button {
+        color: var(--color-light-gray);
+        background: transparent;
+        border: 0;
+        padding: .4rem 1rem;
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        font-size: .9rem;
+        cursor: pointer;
+        outline: none;
+        margin: 0;
+    }
+.players-toggle button.active {
+        background: var(--color-white);
+        color: var(--color-black);
+        font-weight: 600;
+    }
 /* Smartphones */
 @media only screen 
-  and (min-device-width: 0px) 
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  and (min-width: 0px) 
+  and (max-width: 760px)
+  and (-webkit-min-device-pixel-ratio: 1) {
     .roster-stats{
         position: relative;
         width:100%;
@@ -302,38 +351,56 @@ table td:nth-child(8),
         .team-details .rankings.row {
             width: 100%;
         }
+
+        .team-details img {
+            width: 7rem;
+        }
+
+        .team-details .team-name span.label.large {
+            font-size: 2.6rem;
+            line-height: 3rem;
+        }
 }
+@media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 760px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+        .team-details .details {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .team-details img {
+            width: 9rem;
+        }
+  }
 /* Tablets */
 @media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
- 
+        .team-info .rankings {
+            margin: .5rem 1rem;
+            min-width: 28%;
+        }
+
+        .team-info .rankings.row {
+            margin-left: 3rem;
+        }
+
+        .team-info .rank-stat .label {
+            font-size: .65rem;
+        }
+
+        .team-info .rank-stat span:nth-child(1) {
+            font-size: 1.6rem;
+        }
+
+        .team-info .rank-stat span:nth-child(2) {
+            margin: .3rem;
+        }
+            .team-info .team-name span.label.large {
+                font-size: 2.7vw;
+                line-height: 1.5rem;
+            }
 }
-.players-toggle {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: var(--color-gray-blue)
-}
-.players-toggle .toggle {
-        display: flex;
-        flex: 0 1 auto;
-        width: 100%;
-        max-width: 58rem;
-    }
-.players-toggle button {
-        color: var(--color-light-gray);
-        background: transparent;
-        border: 0;
-        padding: .4rem 1rem;
-        font-family: 'Barlow Semi Condensed', sans-serif;
-        font-size: .9rem;
-        cursor: pointer;
-        outline: none;
-    }
-.players-toggle button.active {
-        background: var(--color-white);
-        color: var(--color-black);
-        font-weight: 600;
-    }

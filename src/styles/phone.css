@@ -1,0 +1,74 @@
+/* Smartphones */
+@media only screen 
+  and (min-width: 0px) 
+  and (max-width: 760px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .roster-stats{
+        position: relative;
+        width:100%;
+        z-index: 1;
+        margin: auto;
+        overflow: auto;
+    }
+    
+    table {
+        & th, & td {
+            padding: .5rem 1rem;
+            min-width: 1.5rem;
+        }
+
+        & th:nth-child(1),
+        & th:nth-child(2),
+        & td:nth-child(1),
+        & td:nth-child(2)
+        {
+            background: var(--color-white);
+            position: sticky;
+            left: 0;
+            z-index: 2;
+        }
+
+        & th:nth-child(2), & td:nth-child(2) {
+            //border-right: 1px solid var(--color-black);
+        }
+    }
+
+    .team-details {
+        flex-wrap: wrap;
+
+        & .rankings {
+            width: 90%;
+            margin: 1rem 0;
+        }
+
+        & .rankings.row {
+            width: 100%;
+        }
+
+        & img {
+            width: 7rem;
+        }
+
+        & .team-name span.label.large {
+            font-size: 2.6rem;
+            line-height: 3rem;
+        }
+    }
+}
+
+
+@media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 760px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .team-details{
+        & .details {
+            width: 100%;
+            justify-content: center;
+        }
+
+        & img {
+            width: 9rem;
+        }
+    }
+  }
