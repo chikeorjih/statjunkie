@@ -74,7 +74,7 @@ table {
 
 .image { 
     opacity: 0; 
-    transition: opacity var(--transition-time-long) ease; 
+    transition: opacity var(--transition-time-long) ease;
 }
 .image.loaded { 
     opacity: 1; 
@@ -184,6 +184,9 @@ table {
     flex-direction: column;
     align-items: center;
     margin: 0 .3vw;
+    /*transition: opacity .6s ease-in;
+    transform-style: preserve-3d;
+    transition: 0.3s;*/
 
     & span:nth-child(1){
         color: var(--color-white);
@@ -211,6 +214,16 @@ table {
         text-align: center;
     }
 }
+
+/*.team-info.loading .rank-stat {
+    transform: rotateX(90deg) translateZ(-4rem);
+    opacity: 0; 
+}
+
+.team-info.loaded .rank-stat {
+    transform: rotateX(0) translateZ(0);
+    opacity: 1; 
+}*/
 
 .react-bootstrap-table {
     width: 100%;

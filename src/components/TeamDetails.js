@@ -16,9 +16,10 @@ class TeamDetails extends Component {
             {(context) => {
                 const team = context.state.teamInfo;
                 const teamStats = team.stats;
-                // console.log(team);
+                let loadedCss = (context.state.isLoading) ? 'loading' : 'loaded';
+
                 return (
-                    <div className="team-info">
+                    <div className={`team-info ${loadedCss}`}>
                         <div className="team-details">
                         <div className="details">
                             <Image url={TEAMLOGO} player={this.props.teamId} type='svg'/>
