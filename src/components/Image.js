@@ -5,7 +5,7 @@ const Image = (props) => {
     const doneLoading = () => {
         setLoaded(true);
     }
-    let imgClass = (loaded) ? 'image loaded' : 'image';
+    let imgClass = (loaded) ? `${props.cssName} loaded` : props.cssName;
 
     return (
         <img className={imgClass} onLoad={doneLoading} alt="player" src={`${props.url}${props.player}.${props.type}`}/>

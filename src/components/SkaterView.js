@@ -16,7 +16,7 @@ class SkaterView extends Component {
 
           const avatarFormater = (cell,row) => {
               return (
-                  <Image url={PLAYERIMAGE} player={cell} type='jpg'/>
+                  <Image cssName={'player'} url={PLAYERIMAGE} player={cell} type='jpg'/>
               );
           };
           const performanceFormater = (avg,careerAvg,cell,stDev) => {

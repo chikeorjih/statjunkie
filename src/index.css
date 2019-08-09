@@ -17,7 +17,7 @@ html, body {
     --color-gray-blue: #152238;
     --color-gray-blue-light: #304364;
 
-    --transition-time: .5s;
+    --transition-time: .3s;
     --transition-time-long: 1s;
 
 }
@@ -82,21 +82,43 @@ table td:nth-child(8),
     table td:nth-child(11) {
         border-right: 1px solid var(--color-subtle-gray);
     }
-.image { 
-    opacity: 0; 
-    transition: opacity var(--transition-time-long) ease;
-}
-.image.loaded { 
-    opacity: 1; 
-}
 .team-content, .team-info {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 .team-info {
-    background: var(--color-gray-blue);
+    background: var(--color-gray-blue)
 }
+.team-info .logo {
+        transform: rotateY(-90deg) translateZ(-4rem);
+        opacity: 0; 
+    }
+.team-info .rank-stat {
+        transform: rotateX(90deg) translateZ(-4rem);
+        opacity: 0; 
+    }
+.team-info.loaded .logo, .team-info.loaded .rank-stat {
+        transition: opacity var(--transition-time) ease-out;
+        transform-style: preserve-3d;
+        transition: var(--transition-time);
+        opacity: 1; 
+    }
+.team-info.loaded .logo {
+        transform: rotateY(0deg) translateZ(0rem);
+    }
+.team-info.loaded .rank-stat {
+        transform: rotateX(0deg) translateZ(-4rem)
+    }
+.team-info.loaded .rank-stat:nth-child(2) {
+            transition-delay: .05s;
+        }
+.team-info.loaded .rank-stat:nth-child(3) {
+            transition-delay: .1s;
+        }
+.team-info.loaded .rank-stat:nth-child(4) {
+            transition-delay: .15s;
+        }
 .team-details {
     display: flex;
     flex: 0 1 auto;
@@ -214,6 +236,13 @@ table td:nth-child(8),
     transform: rotateX(0) translateZ(0);
     opacity: 1; 
 }*/
+.player { 
+    opacity: 0; 
+    transition: opacity var(--transition-time-long) ease;
+}
+.player.loaded { 
+    opacity: 1; 
+}
 .react-bootstrap-table {
     width: 100%;
 }

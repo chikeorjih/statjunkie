@@ -22,7 +22,7 @@ class TeamDetails extends Component {
                     <div className={`team-info ${loadedCss}`}>
                         <div className="team-details">
                         <div className="details">
-                            <Image url={TEAMLOGO} player={this.props.teamId} type='svg'/>
+                            <Image cssName={'logo'} url={TEAMLOGO} player={this.props.teamId} type='svg'/>
                             <div className="team-name">
                                     <span>{team.city}</span>
                                     <span className="name">

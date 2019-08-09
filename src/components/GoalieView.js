@@ -15,7 +15,7 @@ class GoalieView extends Component {
           const players = Mappers.getSummary(context.state.goalies, true);
           const avatarFormater = (cell,row) => {
               return (
-                <Image url={PLAYERIMAGE} player={cell} type='jpg'/>
+                <Image cssName={'player'} url={PLAYERIMAGE} player={cell} type='jpg'/>
               );
           };
           const gaaPerformanceFormater = (avg,careerAvg,cell,isOver) => {
