@@ -68,12 +68,6 @@ table {
         text-align: left;
         color: var(--color-blue);
     }
-
-    & td:nth-child(8),
-    & td:nth-child(11) {
-        border-right: 1px solid var(--color-subtle-gray);
-    }
-    
 }
 
 .team-content, .team-info {
@@ -187,8 +181,9 @@ table {
         }
 
         & span.label.large {
-            font-size: 3vw;
+            font-size: 2.8vw;
             line-height: 3.5vw;
+            word-break: break-all;
         }
 
         & .record {
@@ -277,6 +272,55 @@ table {
     & img{
         width: 2rem;
         border-radius: 50%;
+    }
+
+    & .legend {
+        border-top: 1px solid var(--color-light-gray);
+        padding: 1rem 1.5rem;
+        font-size: .9rem;
+
+        & div {
+            display: inline-block;
+            margin: .2rem 0;
+            color: var(--color-dark-gray);
+        }
+
+        & div:nth-child(2) {
+            margin: 0 0 0 2rem;
+        }
+
+        & span {
+            display: inline-block;
+            width: .7rem;
+            height: .7rem;
+            margin: 0 .3rem;
+        }
+
+        & .good {
+            background: var(--color-light-green);
+            border: 1px solid var(--color-green);
+        }
+
+        & .poor {
+            background: var(--color-light-red);
+        }
+    }
+
+    & td:nth-child(8),
+    & td:nth-child(11) {
+        border-right: 1px solid var(--color-subtle-gray);
+    }
+
+    &.goalie {
+        & td:nth-child(8),
+        & td:nth-child(11) {
+            border-right:0;
+        }
+
+        & td:nth-child(7),
+        & td:nth-child(9) {
+            border-right: 1px solid var(--color-subtle-gray);
+        }
     }
 }
 

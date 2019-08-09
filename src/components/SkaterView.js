@@ -63,6 +63,10 @@ class SkaterView extends Component {
             <div className="team-content">
                 <div className='roster-stats'>
                     <BootstrapTable keyField='picture' data={ players } columns={ columns } defaultSorted={ defaultSorted }/>
+                    <div className="legend">
+                      <div><span className="good"></span> Better than recent performance (last 3 years)</div>
+                      <div><span className="poor"></span> Worse than recent performance (last 3 years)</div>
+                    </div>
                 </div>
             </div>
           )

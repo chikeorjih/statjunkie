@@ -38,7 +38,6 @@ table {
     width: 100%;
     font-size: .9rem;
     border-collapse: collapse
-    
 }
 table th {
         cursor: pointer;
@@ -81,10 +80,6 @@ table td:nth-child(2) {
         padding: 1rem .2rem;
         text-align: left;
         color: var(--color-blue);
-    }
-table td:nth-child(8),
-    table td:nth-child(11) {
-        border-right: 1px solid var(--color-subtle-gray);
     }
 .team-content, .team-info {
     width: 100%;
@@ -180,8 +175,9 @@ table td:nth-child(8),
             color: var(--color-white);
         }
 .team-details .team-name span.label.large {
-            font-size: 3vw;
+            font-size: 2.8vw;
             line-height: 3.5vw;
+            word-break: break-all;
         }
 .team-details .team-name .record {
             font-size: 1rem
@@ -257,6 +253,44 @@ table td:nth-child(8),
         width: 2rem;
         border-radius: 50%;
     }
+.roster-stats .legend {
+        border-top: 1px solid var(--color-light-gray);
+        padding: 1rem 1.5rem;
+        font-size: .9rem
+    }
+.roster-stats .legend div {
+            display: inline-block;
+            margin: .2rem 0;
+            color: var(--color-dark-gray);
+        }
+.roster-stats .legend div:nth-child(2) {
+            margin: 0 0 0 2rem;
+        }
+.roster-stats .legend span {
+            display: inline-block;
+            width: .7rem;
+            height: .7rem;
+            margin: 0 .3rem;
+        }
+.roster-stats .legend .good {
+            background: var(--color-light-green);
+            border: 1px solid var(--color-green);
+        }
+.roster-stats .legend .poor {
+            background: var(--color-light-red);
+        }
+.roster-stats td:nth-child(8),
+    .roster-stats td:nth-child(11) {
+        border-right: 1px solid var(--color-subtle-gray);
+    }
+.roster-stats.goalie td:nth-child(8),
+        .roster-stats.goalie td:nth-child(11) {
+            border-right:0;
+        }
+.roster-stats.goalie td:nth-child(7),
+        .roster-stats.goalie td:nth-child(9) {
+            border-right: 1px solid var(--color-subtle-gray);
+        }
 .dropdown {
     display: inline-block;
     position: relative;
