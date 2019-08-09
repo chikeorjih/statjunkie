@@ -177,7 +177,6 @@ table td:nth-child(2) {
 .team-details .team-name span.label.large {
             font-size: 2.8vw;
             line-height: 3.5vw;
-            word-break: break-all;
         }
 .team-details .team-name .record {
             font-size: 1rem
@@ -260,11 +259,8 @@ table td:nth-child(2) {
     }
 .roster-stats .legend div {
             display: inline-block;
-            margin: .2rem 0;
+            margin: .2rem 2rem 0 0;
             color: var(--color-dark-gray);
-        }
-.roster-stats .legend div:nth-child(2) {
-            margin: 0 0 0 2rem;
         }
 .roster-stats .legend span {
             display: inline-block;
