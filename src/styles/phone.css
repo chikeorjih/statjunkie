@@ -87,6 +87,7 @@
             height: 100%;
             z-index: 1;
             padding-top: 2rem;
+            margin: 0;
 
             & li {
                 padding: 1rem 3rem;

@@ -184,9 +184,18 @@ table td:nth-child(8),
             line-height: 3.5vw;
         }
 .team-details .team-name .record {
-            font-size: 1rem;
-            margin-top: .5rem;
+            font-size: 1rem
         }
+.team-details .team-name .record span {
+                margin-right: .5rem;
+                padding-right: .5rem;
+                border-right: 1px solid var(--color-white);
+                color: var(--color-white);
+            }
+.team-details .team-name .record span:nth-child(2) {
+                border: 0;
+                color: var(--color-light-gray);
+            }
 .team-details .rankings {
         min-width: 26%;
         display: flex;
@@ -442,7 +451,8 @@ table td:nth-child(8),
             width: 100%;
             height: 100%;
             z-index: 1;
-            padding-top: 2rem
+            padding-top: 2rem;
+            margin: 0
         }
 
             .team-details .team-name .name .dropdown ul.dropdown-list li {

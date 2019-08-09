@@ -29,7 +29,8 @@ class TeamDetails extends Component {
                                         <DropDown label={team.teamName} list={TeamIds} updateTeam={context.updateTeam}/>
                                     </span>
                                     <div className="record">
-                                        {teamStats.wins}-{teamStats.losses}-{teamStats.ot}
+                                        <span>{teamStats.pts} pts</span>
+                                        <span>{teamStats.wins}-{teamStats.losses}-{teamStats.ot}</span>
                                     </div>
                             </div>
                             </div>

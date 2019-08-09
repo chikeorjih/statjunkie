@@ -193,7 +193,18 @@ table {
 
         & .record {
             font-size: 1rem;
-            margin-top: .5rem;
+
+            & span {
+                margin-right: .5rem;
+                padding-right: .5rem;
+                border-right: 1px solid var(--color-white);
+                color: var(--color-white);
+            }
+
+            & span:nth-child(2) {
+                border: 0;
+                color: var(--color-light-gray);
+            }
         }
     }
 
