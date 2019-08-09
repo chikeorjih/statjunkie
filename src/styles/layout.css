@@ -8,6 +8,10 @@ html, body {
     color: var(--color-dark-gray);
 }
 
+button {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
 table {
     width: 100%;
     font-size: .9rem;
@@ -213,9 +217,6 @@ table {
     flex-direction: column;
     align-items: center;
     margin: 0 .3vw;
-    /*transition: opacity .6s ease-in;
-    transform-style: preserve-3d;
-    transition: 0.3s;*/
 
     & span:nth-child(1){
         color: var(--color-white);
@@ -243,16 +244,6 @@ table {
         text-align: center;
     }
 }
-
-/*.team-info.loading .rank-stat {
-    transform: rotateX(90deg) translateZ(-4rem);
-    opacity: 0; 
-}
-
-.team-info.loaded .rank-stat {
-    transform: rotateX(0) translateZ(0);
-    opacity: 1; 
-}*/
 
 .player { 
     opacity: 0; 
@@ -299,6 +290,10 @@ table {
 
     & li:hover {
         background: var(--color-gray-blue-light);
+    }
+
+    & .close {
+        display: none;
     }
 }
 

@@ -6,15 +6,15 @@
     .roster-stats{
         position: relative;
         width:100%;
-        z-index: 1;
         margin: auto;
         overflow: auto;
     }
     
     table {
         & th, & td {
-            padding: .5rem 1rem;
+            padding: .8rem 1rem;
             min-width: 1.5rem;
+            z-index: -1;
         }
 
         & th:nth-child(1),
@@ -25,11 +25,7 @@
             background: var(--color-white);
             position: sticky;
             left: 0;
-            z-index: 2;
-        }
-
-        & th:nth-child(2), & td:nth-child(2) {
-            //border-right: 1px solid var(--color-black);
+            z-index: 0;
         }
     }
 
@@ -52,6 +48,59 @@
         & .team-name span.label.large {
             font-size: 2.6rem;
             line-height: 3rem;
+        }
+    }
+
+    .players-toggle {
+        border-bottom: 2px solid var(--color-light-gray);
+
+        & button {
+            padding: .8rem 1rem;
+            margin-top: .4rem;
+            width: 50%;
+            border-bottom: 4px solid transparent;
+        }
+
+        & button.active {
+            background: var(--color-gray-blue);
+            color: var(--color-white);
+            font-size: 1rem;
+            border-bottom: 4px solid var(--color-white);
+        }
+    }
+
+    .team-details .team-name .name .dropdown {
+        & button {
+            background: var(--color-subtle-gray);
+            border: 0;
+            color: var(--color-gray-blue);
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: .4rem 1rem;
+        }
+
+        & ul.dropdown-list {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            padding-top: 2rem;
+
+            & li {
+                padding: 1rem 3rem;
+                font-size: 1.4rem;
+                color: var(--color-white);
+            }
+
+            & .close {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                padding: 0;
+            }
         }
     }
 }

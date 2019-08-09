@@ -26,6 +26,7 @@ const DropDown = (props) => {
             <span className={labelCss}>{props.label}</span>
             <span className={caretCss}></span>
             <ul className={listCss}>
+                <li className="close"><button onClick={toggleDropdown}>Close</button></li>
                 {teamList}
             </ul>
         </div>
