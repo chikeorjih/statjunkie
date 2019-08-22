@@ -31,7 +31,7 @@ class Team extends Component {
       showGoalies: false,
       playerModal: {
         isOpen: false,
-        activePlayer: ''
+        activePlayer: {}
       }
     }
   }
@@ -52,7 +52,22 @@ class Team extends Component {
   }
 
   showPlayerModal(player) {
-    console.log(player);
+    const playerDetails = this.state.players.filter(skater => skater.details.id.toString() === player.toString())[0];
+    this.setState({
+      playerModal: {
+        isOpen: true,
+        activePlayer: playerDetails
+      }
+    });
+  }
+
+  updateModal(isOpen) {
+    this.setState({
+      playerModal: {
+        isOpen,
+        activePlayer:{}
+      }
+    });
   }
 
   fetchTeamDetails() {
@@ -83,7 +98,7 @@ class Team extends Component {
         <GoalieView teamId={this.state.currentTeam} /> : 
         <SkaterView teamId={this.state.currentTeam} showPlayerModal={this.showPlayerModal.bind(this)}/>;
 
-      const playerModal = (this.state.playerModal.isOpen) && <PlayerModal />
+      const playerModal = (this.state.playerModal.isOpen) && <PlayerModal showModal={this.updateModal.bind(this)} activePlayer={this.state.playerModal.activePlayer}/>
 
       return (
         <TeamContext.Provider value={{state: this.state,updateTeam: this.updateTeam.bind(this)}}>
