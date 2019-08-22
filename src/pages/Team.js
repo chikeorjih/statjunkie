@@ -6,6 +6,7 @@ import Toggle from '../components/Toggle';
 import Api from '../helpers/api';
 import Mappers from '../helpers/mappers';
 import {navigate} from 'hookrouter';
+import PlayerModal from '../components/PlayerModal';
 
 const TeamContext = React.createContext(null);
 const TEAM_API = 'https://statsapi.web.nhl.com/api/v1/teams/';
@@ -27,7 +28,11 @@ class Team extends Component {
           stats: {},
           ranks: { ranking: {} }
       },
-      showGoalies: false
+      showGoalies: false,
+      playerModal: {
+        isOpen: false,
+        activePlayer: ''
+      }
     }
   }
 
@@ -44,6 +49,10 @@ class Team extends Component {
 
   updatePlayers(showGoalies) {
     this.setState({showGoalies: showGoalies});
+  }
+
+  showPlayerModal(player) {
+    console.log(player);
   }
 
   fetchTeamDetails() {
@@ -72,7 +81,9 @@ class Team extends Component {
   render() {
       const players = (this.state.showGoalies) ? 
         <GoalieView teamId={this.state.currentTeam} /> : 
-        <SkaterView teamId={this.state.currentTeam} />;
+        <SkaterView teamId={this.state.currentTeam} showPlayerModal={this.showPlayerModal.bind(this)}/>;
+
+      const playerModal = (this.state.playerModal.isOpen) && <PlayerModal />
 
       return (
         <TeamContext.Provider value={{state: this.state,updateTeam: this.updateTeam.bind(this)}}>
@@ -80,6 +91,7 @@ class Team extends Component {
               <TeamDetails teamId={this.state.currentTeam} />
               <Toggle updatePlayers={this.updatePlayers.bind(this)}/>
               {players}
+              {playerModal}
             </div>
         </TeamContext.Provider>
       );

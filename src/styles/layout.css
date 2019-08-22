@@ -62,11 +62,20 @@ table {
     }
 
     & td:nth-child(2) {
-        font-weight: 400;
         min-width: 7rem;
         padding: 1rem .2rem;
         text-align: left;
+    }
+
+    & .player-name {
+        border: 0;
+        font-weight: 400;
+        background: transparent;
         color: var(--color-blue);
+        cursor: pointer;
+        font-size: .9rem;
+        outline: none;
+        text-align: left;
     }
 }
 

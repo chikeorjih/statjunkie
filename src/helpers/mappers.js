@@ -44,7 +44,7 @@ function getSkaters(players) {
         return (
             {
                 picture: player.details.id,
-                name: player.name,
+                name: {name: player.name, id: player.details.id},
                 position: player.details.primaryPosition.code,
                 gp: player.currentStats.games,
                 goals: player.currentStats.goals,

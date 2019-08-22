@@ -8,6 +8,11 @@ const PLAYERIMAGE = 'https://nhl.bamcontent.com/images/headshots/current/60x60/'
 
 class SkaterView extends Component {
 
+  showPlayerModal(e) {
+    const playerId = e.currentTarget.dataset.playerid;
+    this.props.showPlayerModal(playerId);
+  }
+
   render() {
     return (
       <TeamContext.Consumer>
@@ -19,6 +24,11 @@ class SkaterView extends Component {
                   <Image cssName={'player'} url={PLAYERIMAGE} player={cell} type='jpg'/>
               );
           };
+          const playerFormater = (cell,row) => {
+            return (
+                <button className="player-name" data-playerid={cell.id} onClick={this.showPlayerModal.bind(this)}>{cell.name}</button>
+            );
+        };
           const performanceFormater = (avg,careerAvg,cell,stDev) => {
             //TODO consider sing the Standard deviation thats being passed in
             const buffer = .0244; //give them a 2pt/g/a buffer
@@ -45,7 +55,7 @@ class SkaterView extends Component {
       
           const columns = [
               { dataField: 'picture', text: '', formatter: avatarFormater }, 
-              { dataField: 'name', text: 'Player', sort: true, headerSortingClasses },
+              { dataField: 'name', text: 'Player', sort: true, headerSortingClasses, formatter: playerFormater },
               { dataField: 'position', text: 'Pos', sort: true, headerSortingClasses },
               { dataField: 'gp', text: 'GP', sort: true, headerSortingClasses },
               { dataField: 'goals', text: 'G', sort: true, headerSortingClasses, formatter: goalsPerformanceFormater },
