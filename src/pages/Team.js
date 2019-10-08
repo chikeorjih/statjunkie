@@ -19,7 +19,7 @@ class Team extends Component {
       isLoading: false,
       error: null,
       currentTeam: (this.props.currentTeam === undefined) ? '19' : this.props.currentTeam,
-      currentSeason: '20182019',
+      currentSeason: '20192020',
       teamData:null,
       playerData:null,
       players: [],
