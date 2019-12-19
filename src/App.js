@@ -4,7 +4,7 @@ import {Team} from './pages/Team';
 import {useRoutes} from 'hookrouter';
 
 const routes = {
-  '/': () => <Home />,
+  '/': () => <Team />,
   '/team': () => <Team />,
   '/team/:id': ({id}) => <Team currentTeam={id}/>,
 };
