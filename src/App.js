@@ -5,6 +5,7 @@ import {useRoutes} from 'hookrouter';
 
 const routes = {
   '/': () => <Team />,
+  '/statjunkie': () => <Team />,
   '/team': () => <Team />,
   '/team/:id': ({id}) => <Team currentTeam={id}/>,
 };
