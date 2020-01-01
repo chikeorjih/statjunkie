@@ -11,7 +11,7 @@ const routes = {
 };
 
 const App = () => {
-  return <Team />;
+  return useRoutes(routes);
 }
 
 export default App;
