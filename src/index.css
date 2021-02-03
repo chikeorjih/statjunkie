@@ -283,9 +283,17 @@ table .player-name {
 .roster-stats .legend .poor {
             background: var(--color-light-red);
         }
-.roster-stats td:nth-child(8),
-    .roster-stats td:nth-child(11) {
+.roster-stats td:nth-child(9),
+    .roster-stats td:nth-child(12) {
         border-right: 1px solid var(--color-subtle-gray);
+    }
+.roster-stats td:nth-child(10), 
+    .roster-stats td:nth-child(11), 
+    .roster-stats td:nth-child(12) {
+        background: #f2f5ff;
+    }
+.roster-stats td:nth-child(13) {
+        background: #eaefff;
     }
 .roster-stats.goalie td:nth-child(8),
         .roster-stats.goalie td:nth-child(11) {

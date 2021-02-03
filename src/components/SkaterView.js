@@ -30,7 +30,7 @@ class SkaterView extends Component {
             );
         };
           const performanceFormater = (avg,careerAvg,cell,stDev) => {
-            //TODO consider sing the Standard deviation thats being passed in
+            //TODO consider using the Standard deviation thats being passed in
             const buffer = .0244; //give them a 2pt/g/a buffer
             let style = '';
 
@@ -62,10 +62,10 @@ class SkaterView extends Component {
               { dataField: 'assists', text: 'A', sort: true, headerSortingClasses, formatter: astsPerformanceFormater },
               { dataField: 'points', text: 'Pts', sort: true, headerSortingClasses, formatter: ptsPerformanceFormater },
               { dataField: 'plusMinus', text: '+/-', sort: true, headerSortingClasses },
+              { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
               { dataField: 'projections.goals', text: 'Pj.G', sort: true, headerSortingClasses },
               { dataField: 'projections.assists', text: 'Pj.A', sort: true, headerSortingClasses },
               { dataField: 'projections.points', text: 'Pj.Pts', sort: true, headerSortingClasses },
-              { dataField: 'averages.points', text: 'Pts/G.',sort: true, headerSortingClasses },
               { dataField: 'careerAverages.points', text: 'Career',sort: true, headerSortingClasses }
           ];
           
