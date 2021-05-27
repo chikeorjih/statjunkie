@@ -11,7 +11,7 @@ const routes = {
 };
 
 const App = () => {
-  return useRoutes(routes);
+  return useRoutes(routes) || <h1>Stuff be broken yo!</h1>;
 }
 
 export default App;
