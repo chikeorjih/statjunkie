@@ -7,9 +7,9 @@
     "hookrouter": "^1.2.3",
     "react": "^16.8.6",
     "react-bootstrap-table-next": "^3.1.5",
-    "react-dev-utils": "^9.0.1",
+    "react-dev-utils": "^12.0.1",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "build:css": "postcss src/styles/app.css -o src/index.css",
